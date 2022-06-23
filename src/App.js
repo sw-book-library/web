@@ -13,7 +13,9 @@ class App extends Component {
 
   componentDidMount() {
 
-    fetch(process.env.REACT_APP_API_URL+'books')
+    const header = new Headers({ "Access-Control-Allow-Origin": "*" });
+    
+    fetch(process.env.REACT_APP_API_URL+'books', { header: header })
       .then(response => response.json())
       .then(res => {
         if (res && res.data) {
