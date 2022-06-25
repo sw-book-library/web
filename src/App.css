@@ -32,7 +32,277 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+
+
+
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  display: block;
+  height: 100%;
+  justify-content: center;
+  background: #f2f2f2;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  height: 50px;
+  background: #004E70;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15px 0px;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 50px);
+  background: #f2f2f2;
+}
+
+
+
+.opcoes-cabecalho {
+  display: flex;
+  width: 1120px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.opcoes-cabecalho li {
+  list-style-type: none;
+  padding: 0px 15px;
+}
+
+.opcoes-cabecalho a {
+  text-shadow: 2px 1px 3px black;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: none;
+  color: white;
+}
+
+.botao-menu-lateral {
+  height: 25px;
+  width: 25px;
+}
+
+
+
+.quadro-input {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0px 5px;
+}
+
+.quadro-input a {
+  padding: 8px 1px;
+}
+
+.quadro-input input {
+  height: 40px;
+  border: 2px solid #D9D9D9;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0px 12px;
+  color: #52525C;
+}
+
+.quadro-input input:focus {
+  outline: none !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* Serve para remover as setas dos campos numericos */
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.div-row {
+  /* Para deixar os campos na mesma linha e alinhados a esquerda */
+  display: flex;
+  width: 1120px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.divisao-cadastro-listagem {
+  /* Aparece nas telas de formulario, entre o formulario e a listagem de dados como um titulo, a diferenca entre esse e a classe . titulo-listagem é que esse tem uma borda */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 1120px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #52525C;
+  border-top: 1px solid #9b9b9b;
+}
+
+.titulos-listagem {
+  /* Aparece nas telas de listagem como titulo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 1120px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #52525C;
+}
+
+.botao-padrao {
+  /* Botões de ação dos html de cadastrarLivro, cadastrarUsuario, emprestarLivro, solicitarReserva*/
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  background: #004E70;
+}
+
+
+/* ----------------------------------- Estilo Padrão Listagens --------------------------------- */
+.etiquetas-listagem {
+  display: flex;
+  width: 1120px;
+  height: 48px;
+  border: 2px solid #D9D9D9;
+  border-radius: 8px;
+  margin-right: 8px;
+}
+
+.etiquetas-listagem ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 15px;
+}
+
+.etiquetas-listagem li {
+  list-style-type: none;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: none;
+  color: #52525C;
+}
+
+.etiquetas-listagem a {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: none;
+  color: #52525C;
+}
+
+.listagem-livros {
+  display: flex;
+  width: 1120px;
+  height: calc(100vh - 50px);
+  overflow: auto;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #d9d9d9;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+
+.quadro-dados {
+  /* <ul> da lista de dados */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1120px;
+  height: 48px;
+}
+
+.quadro-dados li {
+  list-style-type: none;
+}
+
+.linha-dados {
+  /* <ul> da linha de dados */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 2px solid #D9D9D9;
+  padding: 0px 15px;
+  width: 1120px;
+  height: 48px;
+}
+
+.linha-dados li {
+  list-style-type: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #797979;
+}
+
+
+/* ------------------------------ Referente a Tela Inicial ------------------------------- */
+h1 {
+  font-size: 100px;
+  font-family: fantasy;
+}
+
+.logo {
+  height: 150px;
+  width: 150px;
+}
+
+.tela-inicial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 50px);
+  background: #f2f2f2;
 }
