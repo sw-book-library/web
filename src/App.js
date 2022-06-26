@@ -21,7 +21,7 @@ class App extends Component {
       .then(res => {
         if (res && res.data) {
 
-          console.log(res.data)
+          console.log("Executou red.data (Livros)" + res.data)
           this.setState({ books: [...this.state.books, ...res.data] })
         }
       });
@@ -42,32 +42,32 @@ class App extends Component {
   // ---------------------------------------------------------------------------------------------------------- //
 
   renderLivros() {
-    if (this.state.books.length <= 0) {
+    /*     if (this.state.books.length <= 0) {
+          return (
+            <li>
+              <ul className="linha-dados">
+                <li style={{ width: '1080px', textAlign: 'center' }}>SEM DADOS ENCONTRADOS</li>
+              </ul>
+            </li>);
+        }
+        else { */
+    return this.state.books.map((val, key) => {
+      /* return <div key={key}>{val.title} | {val.productionYear} | {val.author} | {val.description} | {val.active}</div> */
       return (
         <li>
           <ul className="linha-dados">
-            <li style={{ width: '1080px', textAlign: 'center' }}>SEM DADOS ENCONTRADOS</li>
+            <li style={{ width: '70px' }}>{val.id}</li>
+            <li style={{ width: '340px' }}>{val.title}</li>
+            <li style={{ width: '150px' }}>{val.author}</li>
+            <li style={{ width: '150px' }}>{val.description}</li>
+            <li style={{ width: '150px' }}>{val.category}</li>
+            <li style={{ width: '140px', textAlign: 'center' }}>{val.productionYear}</li>
+            <li style={{ width: '80px' }}>{val.active}</li>
           </ul>
-        </li>);
-    }
-    else {
-      return this.state.books.map((val, key) => {
-        /* return <div key={key}>{val.title} | {val.productionYear} | {val.author} | {val.description} | {val.active}</div> */
-        return (
-          <li>
-            <ul className="linha-dados">
-              <li style={{ width: '70px' }}>0000001</li>
-              <li style={{ width: '340px' }}>{val.title}</li>
-              <li style={{ width: '150px' }}>{val.author}</li>
-              <li style={{ width: '150px' }}>Ciranda Cultural</li>
-              <li style={{ width: '150px' }}>Geografia</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>2014</li>
-              <li style={{ width: '80px' }}>Disponivel</li>
-            </ul>
-          </li>
-        );
-      });
-    }
+        </li>
+      );
+    });
+    /* } */
   }
 
   renderLivrosPage() {
@@ -189,8 +189,8 @@ class App extends Component {
         })
       }
     }
-  
-  
+   
+   
     renderCadastroUsuarioPage() {
       return (
         <div>
@@ -199,38 +199,38 @@ class App extends Component {
               <label>Matricula</label>
               <input style={{ width: '130px' }} type="number" />
             </div>
-  
+   
             <div className="quadro-input">
               <label>Nome</label>
               <input style={{ width: '500px' }} type="text" />
             </div>
           </div>
-  
+   
           <div className="div-row">
             <div className="quadro-input">
               <label>Grupo Acesso</label>
               <input style={{ width: '130px' }} type="text" />
             </div>
-  
+   
             <div className="quadro-input">
               <label>E-mail</label>
               <input style={{ width: '320px' }} type="text" />
             </div>
-  
+   
             <div className="quadro-input">
               <label>Telefone</label>
               <input style={{ width: '170px' }} type="number" />
             </div>
           </div>
-  
+   
           <br />
-  
+   
           <div className="div-botao-padrao">
             <button className="botao-padrao">Cadastrar Usuário</button>
           </div>
-  
+   
           <br />
-  
+   
           <div>
             <div className="divisao-cadastro-listagem">
               <h3>Usuários Cadastrados</h3>
@@ -254,7 +254,7 @@ class App extends Component {
           </div>
         </div>);
     }
-  
+   
    */
 
 
@@ -306,7 +306,7 @@ class App extends Component {
               <li style={{ width: '140px', textAlign: 'center' }}>Data Devolução</li>
             </ul>
           </div>
-  
+   
           <div className="listagem-livros">
             <ul className="quadro-dados">
               {
@@ -316,7 +316,7 @@ class App extends Component {
           </div>
         </div>);
     };
-  
+   
    */
 
   // ---------------------------------------------------------------------------------------------------------- //
@@ -397,7 +397,7 @@ class App extends Component {
             <input type="password" name="" id="" placeholder="Senha" />
             <button type="submit">LOGIN</button>
           </form>
-          <a href="">Entrar em modo aluno</a>
+          <a href="https://github.com/sw-book-library">Entrar em modo aluno</a>
         </div>
       </main>
     );
