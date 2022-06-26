@@ -6,9 +6,12 @@ import { Component } from 'react';
 class App extends Component {
 
   constructor(props) {
+    var requestURL = 'https://book-library-back.herokuapp.com/books';
+    var request = new XMLHttpRequest();
+    request.open('GET', requestURL);
     super(props);
     this.state = {
-      books: []
+      books: [request.response]
     }
   }
 
@@ -20,7 +23,6 @@ class App extends Component {
       .then(response => response.json())
       .then(res => {
         if (res && res.data) {
-
           console.log("Executou red.data (Livros)" + res.data)
           this.setState({ books: [...this.state.books, ...res.data] })
         }
@@ -42,32 +44,34 @@ class App extends Component {
   // ---------------------------------------------------------------------------------------------------------- //
 
   renderLivros() {
-    /*     if (this.state.books.length <= 0) {
-          return (
-            <li>
-              <ul className="linha-dados">
-                <li style={{ width: '1080px', textAlign: 'center' }}>SEM DADOS ENCONTRADOS</li>
-              </ul>
-            </li>);
-        }
-        else { */
-    return this.state.books.map((val, key) => {
-      /* return <div key={key}>{val.title} | {val.productionYear} | {val.author} | {val.description} | {val.active}</div> */
+    if (this.state.books.length <= 0) {
       return (
         <li>
           <ul className="linha-dados">
-            <li style={{ width: '70px' }}>{val.id}</li>
-            <li style={{ width: '340px' }}>{val.title}</li>
-            <li style={{ width: '150px' }}>{val.author}</li>
-            <li style={{ width: '150px' }}>{val.description}</li>
-            <li style={{ width: '150px' }}>{val.category}</li>
-            <li style={{ width: '140px', textAlign: 'center' }}>{val.productionYear}</li>
-            <li style={{ width: '80px' }}>{val.active}</li>
+            <li style={{ width: '1080px', textAlign: 'center' }}>SEM DADOS ENCONTRADOS</li>
           </ul>
-        </li>
-      );
-    });
-    /* } */
+        </li>);
+    }
+    else {
+      return (<ul className="quadro-dados">{this.state.books.map((val, key) => {
+        return (
+          <li key={key}>
+            <ul className="linha-dados">
+              <li style={{ width: '70px' }}>{val.id}</li>
+              <li style={{ width: '340px' }}>{val.title}</li>
+              <li style={{ width: '150px' }}>{val.author}</li>
+              <li style={{ width: '150px' }}>{val.description}</li>
+              <li style={{ width: '150px' }}>{val.category}</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>{val.productionYear}</li>
+              <li style={{ width: '80px' }}>{val.active}</li>
+            </ul>
+          </li>
+        );
+      }
+      )
+      }
+      </ul>);
+    };
   }
 
   renderLivrosPage() {
