@@ -44,13 +44,19 @@ class App extends Component {
   // ---------------------------------------------------------------------------------------------------------- //
 
   renderLivros() {
-    if (this.state.books.length <= 0) {
+    console.log("this.state.books")
+    console.log(this.state.books)
+    console.log("Array.isArray(this.state.books)")
+    console.log(Array.isArray(this.state.books))
+    if (Array.isArray(this.state.books) || this.state.books.length <= 0) {
       return (
-        <li>
-          <ul className="linha-dados">
-            <li style={{ width: '1080px', textAlign: 'center' }}>SEM DADOS ENCONTRADOS</li>
-          </ul>
-        </li>);
+        <ul className="quadro-dados">
+          <li>
+            <ul className="linha-dados">
+              <li style={{ width: '1080px', textAlign: 'center' }}>SEM DADOS ENCONTRADOS</li>
+            </ul>
+          </li>
+        </ul>);
     }
     else {
       return (<ul className="quadro-dados">{this.state.books.map((val, key) => {
@@ -93,11 +99,9 @@ class App extends Component {
         </div>
 
         <div className="listagem-livros">
-          <ul className="quadro-dados">
-            {
-              this.renderLivros()
-            }
-          </ul>
+          {
+            this.renderLivros()
+          }
         </div>
       </div>);
   }
