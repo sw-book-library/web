@@ -6,12 +6,9 @@ import { Component } from 'react';
 class App extends Component {
 
   constructor(props) {
-    var requestURL = 'https://book-library-back.herokuapp.com/books';
-    var request = new XMLHttpRequest();
-    request.open('GET', requestURL);
     super(props);
     this.state = {
-      books: [request.response]
+      books: []
     }
   }
 
@@ -19,12 +16,11 @@ class App extends Component {
 
     const header = new Headers({ "Access-Control-Allow-Origin": "*" });
 
-    fetch(process.env.REACT_APP_API_URL + 'books', { header: header })
+    fetch("https://book-library-back.herokuapp.com/books" /* process.env.REACT_APP_API_URL + 'books', { header: header } */)
       .then(response => response.json())
       .then(res => {
-        if (res && res.data) {
-          console.log("Executou red.data (Livros)" + res.data)
-          this.setState({ books: [...this.state.books, ...res.data] })
+        if (res/*  && res.data */) {
+          this.setState({ books: [...this.state.books, ...res] })
         }
       });
 
@@ -44,11 +40,7 @@ class App extends Component {
   // ---------------------------------------------------------------------------------------------------------- //
 
   renderLivros() {
-    console.log("this.state.books")
-    console.log(this.state.books)
-    console.log("Array.isArray(this.state.books)")
-    console.log(Array.isArray(this.state.books))
-    if (Array.isArray(this.state.books) || this.state.books.length <= 0) {
+    if (!Array.isArray(this.state.books) || this.state.books.length <= 0) {
       return (
         <ul className="quadro-dados">
           <li>
@@ -69,7 +61,7 @@ class App extends Component {
               <li style={{ width: '150px' }}>{val.description}</li>
               <li style={{ width: '150px' }}>{val.category}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{val.productionYear}</li>
-              <li style={{ width: '80px' }}>{val.active}</li>
+              <li style={{ width: '80px' }}>{val.active === true ? "Disponivel" : "Alugado"}</li>
             </ul>
           </li>
         );
