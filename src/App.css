@@ -289,7 +289,7 @@ input::-webkit-inner-spin-button {
   white-space: nowrap;
   overflow: hidden !important;
   text-overflow: ellipsis;
-  word-wrap: break-word;
+  
 }
 
 .linha-dados li {
@@ -298,6 +298,10 @@ input::-webkit-inner-spin-button {
   font-size: 14px;
   font-weight: 500;
   color: #797979;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 
 }
 
