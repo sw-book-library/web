@@ -1,75 +1,45 @@
 import logo from './LogoDigilibLibrary.png';
 import './App.css';
 import { Component } from 'react';
-/* import Teacher2 from "./images/teacher2.jpg" */
+import axios from 'axios';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      users: [],
+      emprestimos: []
     }
   }
 
-  componentDidMount() {
-
-    const header = new Headers({ "Access-Control-Allow-Origin": "*" });
-
-    fetch("https://book-library-back.herokuapp.com/books" /* process.env.REACT_APP_API_URL + 'books', { header: header } */)
-      .then(response => response.json())
-      .then(res => {
-        if (res/*  && res.data */) {
-          this.setState({ books: [...this.state.books, ...res] })
-        }
-      });
-
-    /*     fetch(process.env.REACT_APP_API_URL + 'users', { header: header })
-          .then(response => response.json())
-          .then(res => {
-            if (res && res.data) {
-              console.log(res.data)
-              this.setState({ users: [...this.state.users, ...res.data] })
-            }
-          }); */
-
-  }
-
-    inserirLivroTeste = (inputTitle, inputProductionYear, inputAuthor, inputDescription, inputCategory) => {
-    console.log("inserirLivroTeste");
-
-    var data = JSON.stringify({
+  inserirLivro = (inputTitle, inputProductionYear, inputAuthor, inputDescription, inputCategory) => {
+    var data = {
       title: inputTitle,
       productionYear: inputProductionYear,
       author: inputAuthor,
       description: inputDescription,
       category: inputCategory,
-    })
-    console.log(data);
+    }
 
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        title: inputTitle,
-        productionYear: inputProductionYear,
-        author: inputAuthor,
-        description: inputDescription,
-        category: inputCategory,
-      }),
-      mode: 'no-cors'
-    };
-    console.log(requestOptions)
-    fetch(process.env.REACT_APP_API_URL + "books", requestOptions)
-/*       .then(response => response.json())
-      .then(data => this.setState({ postId: data.id })) */;
+    axios.post("http://localhost:3001/books", data).then(res => {
+      alert(`Registro Inserido no banco com sucesso`);
+    })
+  }
+
+  componentDidMount() {
+    axios.get(process.env.REACT_APP_API_URL + 'books')
+      .then(res => {
+        if (res.data && res.data) {
+          this.setState({ books: [...this.state.books, ...res.data] })
+        }
+      });
   }
 
 
-  
+
+
   // ---------------------------------------------------------------------------------------------------------- //
   //                                         RENDERIZA A LISTAGEM DE LIVROS                                     //
   // ---------------------------------------------------------------------------------------------------------- //
@@ -115,13 +85,13 @@ class App extends Component {
         </div>
         <div className="etiquetas-listagem">
           <ul>
-            <li style={{ width: `70px` }}>Código</li>
-            <li style={{ width: `340px` }}>Título</li>
-            <li style={{ width: `150px` }}>Autor</li>
-            <li style={{ width: `150px` }}>Editora</li>
-            <li style={{ width: `150px` }}>Categoria</li>
-            <li style={{ width: `140px`, textAlign: `center` }}>Ano Publicação</li>
-            <li style={{ width: `80px` }}>Status</li>
+            <li style={{ width: '70px' }}>Código</li>
+            <li style={{ width: '340px' }}>Título</li>
+            <li style={{ width: '150px' }}>Autor</li>
+            <li style={{ width: '150px' }}>Editora</li>
+            <li style={{ width: '150px' }}>Categoria</li>
+            <li style={{ width: '140px', textAlign: 'center' }}>Ano Publicação</li>
+            <li style={{ width: '80px' }}>Status</li>
           </ul>
         </div>
 
@@ -134,13 +104,14 @@ class App extends Component {
   }
 
 
+
   // ---------------------------------------------------------------------------------------------------------- //
   //                               RENDERIZA O CADASTRO DE LIVROS COM A LISTAGEM                                //
   // ---------------------------------------------------------------------------------------------------------- //
 
   renderCadastroLivroPage() {
     return (
-            <div>
+      <div>
         <div className="div-row">
           <div className="quadro-input">
             <label>Codigo</label>
@@ -170,7 +141,7 @@ class App extends Component {
           </div>
 
           <div className="quadro-input">
-            <label>Ano de Publicação</label>
+            <label>Publicação</label>
             <input style={{ width: '200px' }} type="date" id="anoPublicacao" />
           </div>
         </div>
@@ -178,7 +149,7 @@ class App extends Component {
         <br />
 
         <div className="div-botao-padrao">
-           <button onClick={() => { this.inserirLivroTeste(document.getElementById("titulo").value, document.getElementById("anoPublicacao").value, document.getElementById("autor").value, document.getElementById("description").value, document.getElementById("categoria").value) }} className="botao-padrao">Cadastrar Livro</button>
+          <button onClick={() => { this.inserirLivro(document.getElementById("titulo").value, document.getElementById("anoPublicacao").value, document.getElementById("autor").value, document.getElementById("description").value, document.getElementById("categoria").value) }} className="botao-padrao">Cadastrar Livro</button>
         </div>
 
         <br />
@@ -197,100 +168,100 @@ class App extends Component {
   // ---------------------------------------------------------------------------------------------------------- //
 
 
-  /* 
-    renderUsuarios() {
-      if (this.state.users.length <= 0) {
+
+  renderUsuarios() {
+    if (this.state.users.length <= 0) {
+      return (
+        <li>
+          <ul className="linha-dados">
+            <li style={{ width: '1080px', textAlign: 'center' }}>SEM DADOS ENCONTRADOS</li>
+          </ul>
+        </li>);
+    }
+    else {
+      return this.state.users.map((val, key) => {
+        //<div key={key}>{val.name} | {val.age}</div>
         return (
           <li>
             <ul className="linha-dados">
-              <li style={{ width: '1080px', textAlign: 'center'}}>SEM DADOS ENCONTRADOS</li>
+              <li style={{ width: '100px' }}>202020400</li>
+              <li style={{ width: '430px' }}>Joãozinho da Silva</li>
+              <li style={{ width: '308px' }}>joaozinhosilva123@gmail.com</li>
+              <li style={{ width: '150px' }}>(48) 4002-8922</li>
+              <li style={{ width: '100px' }}>Aluno</li>
             </ul>
-          </li>);
-      }
-      else {
-        return this.state.users.map((val, key) => {
-          //<div key={key}>{val.name} | {val.age}</div>
-          return (
-            <li>
-              <ul className="linha-dados">
-                <li style={{ width: '100px' }}>202020400</li>
-                <li style={{ width: '430px' }}>Joãozinho da Silva</li>
-                <li style={{ width: '308px' }}>joaozinhosilva123@gmail.com</li>
-                <li style={{ width: '150px' }}>(48) 4002-8922</li>
-                <li style={{ width: '100px' }}>Aluno</li>
-              </ul>
-            </li>
-          );
-        })
-      }
+          </li>
+        );
+      })
     }
-   
-   
-    renderCadastroUsuarioPage() {
-      return (
+  }
+
+
+  renderCadastroUsuarioPage() {
+    return (
+      <div>
+        <div className="div-row">
+          <div className="quadro-input">
+            <label>Matricula</label>
+            <input style={{ width: '130px' }} type="number" />
+          </div>
+
+          <div className="quadro-input">
+            <label>Nome</label>
+            <input style={{ width: '500px' }} type="text" />
+          </div>
+        </div>
+
+        <div className="div-row">
+          <div className="quadro-input">
+            <label>Grupo Acesso</label>
+            <input style={{ width: '130px' }} type="text" />
+          </div>
+
+          <div className="quadro-input">
+            <label>E-mail</label>
+            <input style={{ width: '320px' }} type="text" />
+          </div>
+
+          <div className="quadro-input">
+            <label>Telefone</label>
+            <input style={{ width: '170px' }} type="number" />
+          </div>
+        </div>
+
+        <br />
+
+        <div className="div-botao-padrao">
+          <button className="botao-padrao">Cadastrar Usuário</button>
+        </div>
+
+        <br />
+
         <div>
-          <div className="div-row">
-            <div className="quadro-input">
-              <label>Matricula</label>
-              <input style={{ width: '130px' }} type="number" />
-            </div>
-   
-            <div className="quadro-input">
-              <label>Nome</label>
-              <input style={{ width: '500px' }} type="text" />
-            </div>
+          <div className="divisao-cadastro-listagem">
+            <h3>Usuários Cadastrados</h3>
           </div>
-   
-          <div className="div-row">
-            <div className="quadro-input">
-              <label>Grupo Acesso</label>
-              <input style={{ width: '130px' }} type="text" />
-            </div>
-   
-            <div className="quadro-input">
-              <label>E-mail</label>
-              <input style={{ width: '320px' }} type="text" />
-            </div>
-   
-            <div className="quadro-input">
-              <label>Telefone</label>
-              <input style={{ width: '170px' }} type="number" />
-            </div>
+          <div className="etiquetas-listagem">
+            <ul>
+              <li style={{ width: '100px' }}>Matricula</li>
+              <li style={{ width: '425px' }}>Nome</li>
+              <li style={{ width: '308px' }}>E-mail</li>
+              <li style={{ width: '150px' }}>Telefone</li>
+              <li style={{ width: '100px' }}>Grupo Acesso</li>
+            </ul>
           </div>
-   
-          <br />
-   
-          <div className="div-botao-padrao">
-            <button className="botao-padrao">Cadastrar Usuário</button>
+          <div className="listagem-livros">
+            <ul className="quadro-dados">
+              {
+                this.renderUsuarios()
+              }
+            </ul>
           </div>
-   
-          <br />
-   
-          <div>
-            <div className="divisao-cadastro-listagem">
-              <h3>Usuários Cadastrados</h3>
-            </div>
-            <div className="etiquetas-listagem">
-              <ul>
-                <li style={{ width: '100px' }}>Matricula</li>
-                <li style={{ width: '425px' }}>Nome</li>
-                <li style={{ width: '308px' }}>E-mail</li>
-                <li style={{ width: '150px' }}>Telefone</li>
-                <li style={{ width: '100px' }}>Grupo Acesso</li>
-              </ul>
-            </div>
-            <div className="listagem-livros">
-              <ul className="quadro-dados">
-                {
-                  this.renderUsuarios()
-                }
-              </ul>
-            </div>
-          </div>
-        </div>);
-    }
-   
-   */
+        </div>
+      </div>);
+  }
+
+
 
 
   // ---------------------------------------------------------------------------------------------------------- //
@@ -298,61 +269,61 @@ class App extends Component {
   // ---------------------------------------------------------------------------------------------------------- //
 
 
-  /* 
-    renderEmprestimoLivros() {
-      if (this.state.VARIAVELEMPRESTIMOS.length <= 0) {
+
+  renderEmprestimoLivros() {
+    if (this.state.emprestimos.length <= 0) {
+      return (
+        <li>
+          <ul className="linha-dados">
+            <li style={{ width: '1080px', textAlign: 'center' }}>SEM DADOS ENCONTRADOS</li>
+          </ul>
+        </li>);
+    }
+    else {
+      return this.state.emprestimos.map((val, key) => {
         return (
           <li>
             <ul className="linha-dados">
-              <li style={{ width: '1080px', textAlign: 'center' }}>SEM DADOS ENCONTRADOS</li>
+              <li style={{ width: '100px' }}>202020400</li>
+              <li style={{ width: '280px' }}>Joãozinho da Silva</li>
+              <li style={{ width: '70px' }}>0000001</li>
+              <li style={{ width: '350px' }}>Atlas escolar geográfico 1ª edição</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>01/02/2023</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>31/03/2023</li>
             </ul>
-          </li>);
-      }
-      else {
-        return this.state.VARIAVELEMPRESTIMOS.map((val, key) => {
-          return (
-            <li>
-              <ul className="linha-dados">
-                <li style={{ width: '100px' }}>202020400</li>
-                <li style={{ width: '280px' }}>Joãozinho da Silva</li>
-                <li style={{ width: '70px' }}>0000001</li>
-                <li style={{ width: '350px' }}>Atlas escolar geográfico 1ª edição</li>
-                <li style={{ width: '140px', textAlign: 'center' }}>01/02/2023</li>
-                <li style={{ width: '140px', textAlign: 'center' }}>31/03/2023</li>
-              </ul>
-            </li>
-          );
-        })
-      }
+          </li>
+        );
+      })
     }
-    renderEmprestimosLivrosPage() {
-      return (
-        <div>
-          <div className="titulos-listagem">
-            <h3>Livros Emprestados</h3>
-          </div>
-          <div className="etiquetas-listagem">
-            <ul>
-              <li style={{ width: '100px' }}>Matricula</li>
-              <li style={{ width: '280px' }}>Nome</li>
-              <li style={{ width: '70px' }}>Livro</li>
-              <li style={{ width: '350px' }}>Título</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>Data Empréstimo</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>Data Devolução</li>
-            </ul>
-          </div>
-   
-          <div className="listagem-livros">
-            <ul className="quadro-dados">
-              {
-                this.renderEmprestimoLivros()
-              }
-            </ul>
-          </div>
-        </div>);
-    };
-   
-   */
+  }
+  renderEmprestimosLivrosPage() {
+    return (
+      <div>
+        <div className="titulos-listagem">
+          <h3>Livros Emprestados</h3>
+        </div>
+        <div className="etiquetas-listagem">
+          <ul>
+            <li style={{ width: '100px' }}>Matricula</li>
+            <li style={{ width: '280px' }}>Nome</li>
+            <li style={{ width: '70px' }}>Livro</li>
+            <li style={{ width: '350px' }}>Título</li>
+            <li style={{ width: '140px', textAlign: 'center' }}>Data Empréstimo</li>
+            <li style={{ width: '140px', textAlign: 'center' }}>Data Devolução</li>
+          </ul>
+        </div>
+
+        <div className="listagem-livros">
+          <ul className="quadro-dados">
+            {
+              this.renderEmprestimoLivros()
+            }
+          </ul>
+        </div>
+      </div>);
+  };
+
+
 
   // ---------------------------------------------------------------------------------------------------------- //
   //                           RENDERIZA O CADASTRO DE EMPRESTIMOS COM A LISTAGEM                               //
