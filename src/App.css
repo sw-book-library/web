@@ -287,8 +287,9 @@ input::-webkit-inner-spin-button {
   width: 1120px;
   height: 48px;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: hidden !important;
   text-overflow: ellipsis;
+  word-wrap: break-word;
 }
 
 .linha-dados li {
