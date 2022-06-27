@@ -1,4 +1,5 @@
 import logo from './LogoDigilibLibrary.png';
+import iconDelete from './iconDelete.svg';
 import './App.css';
 import { Component } from 'react';
 import axios from 'axios';
@@ -13,21 +14,56 @@ class App extends Component {
       emprestimos: []
     }
   }
-
-  inserirLivro = (inputTitle, inputProductionYear, inputAuthor, inputCategory, inputCode, inputPublishingCompany) => {
+  inserirEditarLivro = (idLivro, inputTitle, inputProductionYear, inputAuthor, inputCategory, inputCode, inputPublishingCompany) => {
     var data = {
       title: inputTitle,
       productionYear: inputProductionYear,
       author: inputAuthor,
-      //description: inputDescription,
       category: inputCategory,
       code: inputCode,
       publishingCompany: inputPublishingCompany
     }
+    if (idLivro === null || idLivro === undefined || idLivro === "") {
+      axios.post(process.env.REACT_APP_API_URL + 'books', data).then(res => {
+        document.getElementById("id").value = null;
+        document.getElementById("codigo").value = null;
+        document.getElementById("titulo").value = null;
+        document.getElementById("autor").value = null;
+        document.getElementById("editora").value = null;
+        document.getElementById("categoria").value = null;
+        document.getElementById("anoPublicacao").value = null;
+        alert(`Registro Inserido no banco com sucesso`);
+      })
+    } else {
+      axios.put(process.env.REACT_APP_API_URL + 'books' + idLivro, data).then(res => {
+        document.getElementById("id").value = null;
+        document.getElementById("codigo").value = null;
+        document.getElementById("titulo").value = null;
+        document.getElementById("autor").value = null;
+        document.getElementById("editora").value = null;
+        document.getElementById("categoria").value = null;
+        document.getElementById("anoPublicacao").value = null;
+        document.getElementById("botao-cadastro-e-editar").textContent = "Cadastrar Livro";
+        alert(`Registro alterado com sucesso`);
+      })
+    }
+  }
 
-    axios.post(process.env.REACT_APP_API_URL + 'books', data).then(res => {
-      alert(`Registro Inserido no banco com sucesso`);
+  deletarLivro = (idLivro) => {
+    axios.delete(process.env.REACT_APP_API_URL + 'books' + idLivro).then(res => {
+      alert(`Registro deletado com sucesso`);
     })
+  }
+
+  editarLivro = (idLivro, inputTitle, inputProductionYear, inputAuthor, inputCategory, inputCode, inputPublishingCompany) => {
+    document.getElementById("id").value = idLivro;
+    document.getElementById("codigo").value = inputCode;
+    document.getElementById("titulo").value = inputTitle;
+    document.getElementById("autor").value = inputAuthor;
+    document.getElementById("editora").value = inputPublishingCompany;
+    document.getElementById("categoria").value = inputCategory;
+    document.getElementById("anoPublicacao").value = inputProductionYear;
+    document.getElementById("botao-cadastro-e-editar").textContent = "Alterar Livro";
   }
 
   componentDidMount() {
@@ -38,6 +74,8 @@ class App extends Component {
         }
       });
   }
+
+
 
 
 
@@ -62,13 +100,16 @@ class App extends Component {
         return (
           <li key={key}>
             <ul className="linha-dados">
+              <li style={{ width: '0px' }} id="id-livro">{val.id}</li>
               <li style={{ width: '70px' }}>{val.code}</li>
               <li style={{ width: '340px' }}>{val.title}</li>
               <li style={{ width: '150px' }}>{val.author}</li>
               <li style={{ width: '150px' }}>{val.publishingCompany}</li>
               <li style={{ width: '150px' }}>{val.category}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{val.productionYear}</li>
-              <li style={{ width: '80px' }}>{val.active === true ? "Disponivel" : "Alugado"}</li>
+              <li style={{ width: '46px' }}>{val.active === true ? "Ativo" : "Inativo"}</li>
+              <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.deletarLivro(val.id) }}>D</button></li>
+              <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.editarLivro(val.id, val.title, val.productionYear, val.author, val.category, val.code, val.publishingCompany) }}>E</button></li>
             </ul>
           </li>
         );
@@ -93,7 +134,8 @@ class App extends Component {
             <li style={{ width: '150px' }}>Editora</li>
             <li style={{ width: '150px' }}>Categoria</li>
             <li style={{ width: '140px', textAlign: 'center' }}>Ano Publicação</li>
-            <li style={{ width: '80px' }}>Status</li>
+            <li style={{ width: '46px' }}>Status</li>
+            <li style={{ width: '38px', textAlign: 'center' }}>...</li>
           </ul>
         </div>
 
@@ -115,6 +157,12 @@ class App extends Component {
     return (
       <div>
         <div className="div-row">
+
+          <div style={{ display: 'none' }}>
+            <label>Id</label>
+            <input style={{ width: '100px' }} type="number" id="id" disabled />
+          </div>
+
           <div className="quadro-input">
             <label>Codigo</label>
             <input style={{ width: '100px' }} type="number" id="codigo" />
@@ -146,12 +194,13 @@ class App extends Component {
             <label>Publicação</label>
             <input style={{ width: '200px' }} type="date" id="anoPublicacao" />
           </div>
+
         </div>
 
         <br />
 
         <div className="div-botao-padrao">
-          <button onClick={() => { this.inserirLivro(document.getElementById("titulo").value, document.getElementById("anoPublicacao").value, document.getElementById("autor").value, document.getElementById("categoria").value,  document.getElementById("codigo").value,  document.getElementById("editora").value) }} className="botao-padrao">Cadastrar Livro</button>
+          <button id='botao-cadastro-e-editar' onClick={() => { this.inserirEditarLivro(document.getElementById("id").value, document.getElementById("titulo").value, document.getElementById("anoPublicacao").value, document.getElementById("autor").value, document.getElementById("categoria").value, document.getElementById("codigo").value, document.getElementById("editora").value) }} className="botao-padrao">Cadastrar Livro</button>
         </div>
 
         <br />
@@ -436,16 +485,16 @@ class App extends Component {
             talvez não de tempo de fazer então ele daria para tirar em ultimos casos*/}
             </ul>
           </header>
-          <main>
+          <main >
             {
               //this.renderTelaInicial()
               //this.renderLivrosPage()
               this.renderCadastroLivroPage()
+
               //this.renderCadastroUsuarioPage()
               //this.renderEmprestimosLivrosPage()
               //this.renderCadastroEmprestimoLivroPage()
             }
-
           </main >
         </div>
       );
