@@ -62,10 +62,10 @@ class App extends Component {
         return (
           <li key={key}>
             <ul className="linha-dados">
-              <li style={{ width: '70px' }}>{val.id}</li>
+              <li style={{ width: '70px' }}>{val.code}</li>
               <li style={{ width: '340px' }}>{val.title}</li>
               <li style={{ width: '150px' }}>{val.author}</li>
-              <li style={{ width: '150px' }}>{val.description}</li>
+              <li style={{ width: '150px' }}>{val.publishingCompany}</li>
               <li style={{ width: '150px' }}>{val.category}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{val.productionYear}</li>
               <li style={{ width: '80px' }}>{val.active === true ? "Disponivel" : "Alugado"}</li>
