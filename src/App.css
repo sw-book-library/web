@@ -286,6 +286,9 @@ input::-webkit-inner-spin-button {
   padding: 0px 15px;
   width: 1120px;
   height: 48px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .linha-dados li {
@@ -294,6 +297,7 @@ input::-webkit-inner-spin-button {
   font-size: 14px;
   font-weight: 500;
   color: #797979;
+
 }
 
 
