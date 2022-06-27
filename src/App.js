@@ -14,13 +14,15 @@ class App extends Component {
     }
   }
 
-  inserirLivro = (inputTitle, inputProductionYear, inputAuthor, inputDescription, inputCategory) => {
+  inserirLivro = (inputTitle, inputProductionYear, inputAuthor, inputCategory, inputCode, inputPublishingCompany) => {
     var data = {
       title: inputTitle,
       productionYear: inputProductionYear,
       author: inputAuthor,
-      description: inputDescription,
+      //description: inputDescription,
       category: inputCategory,
+      code: inputCode,
+      publishingCompany: inputPublishingCompany
     }
 
     axios.post(process.env.REACT_APP_API_URL + 'books', data).then(res => {
@@ -132,7 +134,7 @@ class App extends Component {
 
           <div className="quadro-input">
             <label>Editora</label>
-            <input style={{ width: '200px' }} type="text" id="description" />
+            <input style={{ width: '200px' }} type="text" id="editora" />
           </div>
 
           <div className="quadro-input">
@@ -149,7 +151,7 @@ class App extends Component {
         <br />
 
         <div className="div-botao-padrao">
-          <button onClick={() => { this.inserirLivro(document.getElementById("titulo").value, document.getElementById("anoPublicacao").value, document.getElementById("autor").value, document.getElementById("description").value, document.getElementById("categoria").value) }} className="botao-padrao">Cadastrar Livro</button>
+          <button onClick={() => { this.inserirLivro(document.getElementById("titulo").value, document.getElementById("anoPublicacao").value, document.getElementById("autor").value, document.getElementById("categoria").value,  document.getElementById("codigo").value,  document.getElementById("editora").value) }} className="botao-padrao">Cadastrar Livro</button>
         </div>
 
         <br />
