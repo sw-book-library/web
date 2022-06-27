@@ -35,6 +35,41 @@ class App extends Component {
 
   }
 
+    inserirLivroTeste = (inputTitle, inputProductionYear, inputAuthor, inputDescription, inputCategory) => {
+    console.log("inserirLivroTeste");
+
+    var data = JSON.stringify({
+      title: inputTitle,
+      productionYear: inputProductionYear,
+      author: inputAuthor,
+      description: inputDescription,
+      category: inputCategory,
+    })
+    console.log(data);
+
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        title: inputTitle,
+        productionYear: inputProductionYear,
+        author: inputAuthor,
+        description: inputDescription,
+        category: inputCategory,
+      }),
+      mode: 'no-cors'
+    };
+    console.log(requestOptions)
+    fetch(process.env.REACT_APP_API_URL + "books", requestOptions)
+/*       .then(response => response.json())
+      .then(data => this.setState({ postId: data.id })) */;
+  }
+
+
+  
   // ---------------------------------------------------------------------------------------------------------- //
   //                                         RENDERIZA A LISTAGEM DE LIVROS                                     //
   // ---------------------------------------------------------------------------------------------------------- //
@@ -143,7 +178,7 @@ class App extends Component {
         <br />
 
         <div className="div-botao-padrao">
-          <button className="botao-padrao">Cadastrar Livro</button>
+           <button onClick={() => { this.inserirLivroTeste(document.getElementById("titulo").value, document.getElementById("anoPublicacao").value, document.getElementById("autor").value, document.getElementById("description").value, document.getElementById("categoria").value) }} className="botao-padrao">Cadastrar Livro</button>
         </div>
 
         <br />
