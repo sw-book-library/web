@@ -140,38 +140,38 @@ class App extends Component {
 
   renderCadastroLivroPage() {
     return (
-      <div>
+            <div>
         <div className="div-row">
           <div className="quadro-input">
             <label>Codigo</label>
-            <input style={{ width: '100px' }} type="number" />
+            <input style={{ width: '100px' }} type="number" id="codigo" />
           </div>
 
           <div className="quadro-input">
             <label>Título</label>
-            <input style={{ width: '620px' }} type="text" />
+            <input style={{ width: '620px' }} type="text" id="titulo" />
           </div>
         </div>
 
         <div className="div-row">
           <div className="quadro-input">
             <label>Autor</label>
-            <input style={{ width: '200px' }} type="text" />
+            <input style={{ width: '200px' }} type="text" id="autor" />
           </div>
 
           <div className="quadro-input">
             <label>Editora</label>
-            <input style={{ width: '200px' }} type="text" />
+            <input style={{ width: '200px' }} type="text" id="description" />
           </div>
 
           <div className="quadro-input">
             <label>Categoria</label>
-            <input style={{ width: '200px' }} type="text" />
+            <input style={{ width: '200px' }} type="text" id="categoria" />
           </div>
 
           <div className="quadro-input">
             <label>Ano de Publicação</label>
-            <input style={{ width: '200px' }} type="date" />
+            <input style={{ width: '200px' }} type="date" id="anoPublicacao" />
           </div>
         </div>
 
