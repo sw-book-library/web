@@ -23,7 +23,7 @@ class App extends Component {
       category: inputCategory,
     }
 
-    axios.post("http://localhost:3001/books", data).then(res => {
+    axios.post(process.env.REACT_APP_API_URL + 'books', data).then(res => {
       alert(`Registro Inserido no banco com sucesso`);
     })
   }
