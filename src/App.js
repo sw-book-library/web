@@ -625,10 +625,14 @@ class App extends Component {
                 return (
                   this.renderEmprestimosLivrosPage()
                 )
-              }else {
+              } else if (window.location.href == "https://book-library-front.herokuapp.com/DigilibLibrary") {
                 return (
                   this.renderTelaInicial()
                 )
+              }else{
+                return(
+                  this.renderTelaInicial()
+                  )
               }
             })()}
           </main >
