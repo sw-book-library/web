@@ -322,6 +322,7 @@ input::-webkit-inner-spin-button {
   background-color: #004E70;;
   border: none;
   cursor: pointer;
+  color: white;
 }
 
 /* ------------------------------ Referente a Tela Inicial ------------------------------- */
