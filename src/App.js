@@ -23,7 +23,7 @@ class App extends Component {
       publishingCompany: inputPublishingCompany
     }
     if (idLivro === null || idLivro === undefined || idLivro === "") {
-      axios.post(process.env.REACT_APP_API_URL + 'books', data).then(res => {
+      axios.post(process.env.REACT_APP_API_URL + 'books/', data).then(res => {
         document.getElementById("id").value = null;
         document.getElementById("codigo").value = null;
         document.getElementById("titulo").value = null;
@@ -34,7 +34,7 @@ class App extends Component {
         alert(`Registro Inserido no banco com sucesso`);
       })
     } else {
-      axios.put(process.env.REACT_APP_API_URL + 'books' + idLivro, data).then(res => {
+      axios.put(process.env.REACT_APP_API_URL + 'books/' + idLivro, data).then(res => {
         document.getElementById("id").value = null;
         document.getElementById("codigo").value = null;
         document.getElementById("titulo").value = null;
@@ -49,7 +49,7 @@ class App extends Component {
   }
 
   deletarLivro = (idLivro) => {
-    axios.delete(process.env.REACT_APP_API_URL + 'books' + idLivro).then(res => {
+    axios.delete(process.env.REACT_APP_API_URL + 'books/' + idLivro).then(res => {
       alert(`Registro deletado com sucesso`);
     })
   }
