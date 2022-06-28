@@ -383,7 +383,7 @@ class App extends Component {
         if(local === "INPUT"){
           document.getElementById("nome-usuario").value = res.data.name 
         }else if (local === "LISTAGEM"){
-          document.getElementById("nome-usuario-listagem").textContent = res.data.name 
+          return res.data.name 
         }
       }
       });
@@ -399,7 +399,7 @@ class App extends Component {
           if(local === "INPUT"){
             document.getElementById("nome-livro").value = res.data.title
           }else if (local === "LISTAGEM"){
-            document.getElementById("nome-livro-listagem").textContent = res.data.title 
+            return res.data.title 
           }
         }
       });
@@ -473,9 +473,9 @@ class App extends Component {
           <li key={key}>
             <ul className="linha-dados">
               <li style={{ width: '100px' }}>{val.userId}</li>
-              <li style={{ width: '251px' }} id="nome-usuario-listagem">{this.buscarNomeUsuario(val.userId, "LISTAGEM")}</li>
+              <li style={{ width: '251px' }}>{this.buscarNomeUsuario(val.userId, "LISTAGEM")}</li>
               <li style={{ width: '70px' }}>{val.bookId}</li>
-              <li style={{ width: '331px' }} id="nome-livro-listagem">{this.buscarNomeLivro(val.bookId, "LISTAGEM")}</li>
+              <li style={{ width: '331px' }}>{this.buscarNomeLivro(val.bookId, "LISTAGEM")}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{val.createdAt}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{ /* new Intl.DateTimeFormat('en-US').format( */val.returnDate/* ) */}</li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarEmprestimo(val.id) }}>D</button></li>
