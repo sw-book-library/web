@@ -11,7 +11,8 @@ class App extends Component {
       books: [],
       users: [],
       emprestimos: [],
-      username: ''
+      username: '',
+      title: ''
     }
   }
   componentDidMount() {
@@ -384,7 +385,7 @@ class App extends Component {
         if(local === "INPUT"){
           document.getElementById("nome-usuario").value = res.data.name 
         }else if (local === "LISTAGEM"){
-          return res.data.name
+          this.setState({username: res.data.name})
         }
       }
       });
@@ -400,7 +401,7 @@ class App extends Component {
           if(local === "INPUT"){
             document.getElementById("nome-livro").value = res.data.title
           }else if (local === "LISTAGEM"){
-            this.setState({username: {res.data.title}})
+            this.setState({title: res.data.title})
           }
         }
       });
@@ -471,7 +472,7 @@ class App extends Component {
     else {
       return (<ul className="quadro-dados">{this.state.emprestimos.map((val, key) => {
         
-        var nomeLivro  = {this.state.username}//{this.buscarNomeLivro(val.bookId, "LISTAGEM")}
+        var nomeLivro  = this.state.username//{this.buscarNomeLivro(val.bookId, "LISTAGEM")}
         return (
           <li key={key}>
             <ul className="linha-dados">
