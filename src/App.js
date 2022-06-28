@@ -443,7 +443,7 @@ class App extends Component {
   editarEmprestimo = (idEmprestimo, inputMatricula, inputCodigoLivro, inputDataDevolucao) => {
     document.getElementById("id").value = idEmprestimo;
     document.getElementById("matricula").value = inputMatricula;
-    this.buscarNomeUsuario(inputMatricula, "INPUT);
+    this.buscarNomeUsuario(inputMatricula, "INPUT");
     document.getElementById("codigo-livro").value = inputCodigoLivro;
     this.buscarNomeLivro(inputCodigoLivro, "INPUT");
     document.getElementById("data-devolucao").value = inputDataDevolucao;
