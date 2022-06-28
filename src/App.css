@@ -246,7 +246,7 @@ input::-webkit-inner-spin-button {
 .listagem-livros {
   display: flex;
   width: 1120px;
-  height: calc(100vh - 155px);
+  height: calc(100vh - 160px);
   overflow: auto;
 }
 
