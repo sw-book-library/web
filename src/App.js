@@ -381,7 +381,7 @@ class App extends Component {
         if(local === "INPUT"){
           document.getElementById("nome-usuario").value = res.data.name 
         }else if (local === "LISTAGEM"){
-          document.getElementById("nome-usuario-listagem").value = res.data.name 
+          document.getElementById("nome-usuario-listagem").textContent = res.data.name 
         }
       }
       });
