@@ -573,7 +573,7 @@ class App extends Component {
           <form action="">
             <input type="email" placeholder="Email" />
             <input type="password" name="" id="" placeholder="Senha" />
-            <button onClick="location.href='https://book-library-front.herokuapp.com/DigilibLibrary'" type="submit">LOGIN</button>
+            <button href={"DigilibLibrary"} type="submit">LOGIN</button>
           </form> "
           <a href={"DigilibLibrary"}>Entrar em modo aluno</a>
         </div>
