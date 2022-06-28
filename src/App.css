@@ -246,14 +246,14 @@ input::-webkit-inner-spin-button {
 .listagem-livros {
   display: flex;
   width: 1120px;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 100px);
   overflow: auto;
 }
 
 .listagem-livros-cadastros {
   display: flex;
   width: 1120px;
-  height: calc(100vh - 275px);
+  height: calc(100vh - 335px);
   overflow: auto;
 }
 
