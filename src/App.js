@@ -287,8 +287,8 @@ class App extends Component {
               <li style={{ width: '287px' }}>{val.email}</li>
               <li style={{ width: '150px', textAlign: 'center' }}>{val.createdAt}</li>
               <li style={{ width: '100px' }}>{(val.occupation === "student" ? "Estudante" : (val.occupation === "teacher" ? "Professor" : "Admin"))}</li>
-              <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.deletarUsuario(val.id) }}>D</button></li>
-              <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.editarUsuario(val.id, val.registration, val.name, val.email, val.occupation) }}>E</button></li>
+              <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarUsuario(val.id) }}>D</button></li>
+              <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarUsuario(val.id, val.registration, val.name, val.email, val.occupation) }}>E</button></li>
             </ul>
           </li>
         );
@@ -478,8 +478,8 @@ class App extends Component {
               <li style={{ width: '331px' }} id="nome-livro-listagem">{this.buscarNomeLivro(val.bookId, "LISTAGEM")}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{val.createdAt}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{ /* new Intl.DateTimeFormat('en-US').format( */val.returnDate/* ) */}</li>
-              <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.deletarEmprestimo(val.id) }}>D</button></li>
-              <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.editarEmprestimo(val.id, val.userId, val.bookId, val.returnDate) }}>E</button></li>
+              <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarEmprestimo(val.id) }}>D</button></li>
+              <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarEmprestimo(val.id, val.userId, val.bookId, val.returnDate) }}>E</button></li>
             </ul>
           </li>
         );
