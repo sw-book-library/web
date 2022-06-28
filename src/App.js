@@ -373,13 +373,17 @@ class App extends Component {
 
   //------------------------------------------- EMPRÉSTIMOS -------------------------------------------//
 
-  buscarNomeUsuario = (matricula) => {
+  buscarNomeUsuario = (matricula, local) => {
     document.getElementById("nome-usuario").value = ""
     axios.get(process.env.REACT_APP_API_URL + 'users/registration/' + matricula)
       .then(res => {
-        if (res.data.name) {
-          document.getElementById("nome-usuario").value = res.data.name
+      if (res.data.name) {
+        if(local === "INPUT"){
+          document.getElementById("nome-usuario").value = res.data.name 
+        }else if (local === "LISTAGEM"){
+          return res.data.name;
         }
+      }
       });
   }
 
@@ -461,7 +465,7 @@ class App extends Component {
           <li key={key}>
             <ul className="linha-dados">
               <li style={{ width: '100px' }}>{val.userId}</li>
-              <li style={{ width: '251px' }}>{/* {val.registration} */}</li>
+              <li style={{ width: '251px' }}>{this.buscarNomeUsuario(val.userId, "LISTAGEM")}</li>
               <li style={{ width: '70px' }}>{val.bookId}</li>
               <li style={{ width: '331px' }}>{/* {val.registration} */}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{val.createdAt}</li>
@@ -513,7 +517,7 @@ class App extends Component {
 
           <div className="quadro-input">
             <label>Matricula</label>
-            <input onChange={() => { this.buscarNomeUsuario(document.getElementById("matricula").value) }} style={{ width: '100px' }} type="number" id='matricula' />
+            <input onChange={() => { this.buscarNomeUsuario(document.getElementById("matricula").value, "INPUT") }} style={{ width: '100px' }} type="number" id='matricula' />
           </div>
 
           <div className="quadro-input">
