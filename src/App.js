@@ -607,28 +607,24 @@ class App extends Component {
             </ul>
           </header>
           <main >
-            {(() => {
-              
-              console.log(process.env.REACT_APP_API_URL + "CadastrarLivro");
-              console.log(window.location.href);
-              
-              if (window.location.href == process.env.REACT_APP_API_URL + "CadastrarLivro") {
+            {(() => {              
+              if (window.location.href == "https://book-library-front.herokuapp.com/CadastrarLivro") {
                 return (
                   this.renderCadastroLivroPage()
                 )
-              } else if (window.location.href == process.env.REACT_APP_API_URL + "CadastrarUsuario") {
+              } else if (window.location.href == "https://book-library-front.herokuapp.com/CadastrarUsuario") {
                 return (
                   this.renderCadastroUsuarioPage()
                 )
-              } else if (window.location.href == process.env.REACT_APP_API_URL + "ListarLivro") {
+              } else if (window.location.href == "https://book-library-front.herokuapp.com/ListarLivro") {
                 return (
                   this.renderLivrosPage()
                 )
-              } else if (window.location.href == process.env.REACT_APP_API_URL + "EmprestarLivro") {
+              } else if (window.location.href == "https://book-library-front.herokuapp.com/EmprestarLivro") {
                 return (
                   this.renderCadastroEmprestimoLivroPage()
                 )
-              } else if (window.location.href == process.env.REACT_APP_API_URL + "ConsultarEmprestimo") {
+              } else if (window.location.href == "https://book-library-front.herokuapp.com/ConsultarEmprestimo") {
                 return (
                   this.renderEmprestimosLivrosPage()
                 )
