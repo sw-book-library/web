@@ -374,7 +374,9 @@ class App extends Component {
   //------------------------------------------- EMPRÉSTIMOS -------------------------------------------//
 
   buscarNomeUsuario = (matricula, local) => {
-    document.getElementById("nome-usuario").value = ""
+    if(local === "INPUT){
+       document.getElementById("nome-usuario").value = ""
+    }
     axios.get(process.env.REACT_APP_API_URL + 'users/registration/' + matricula)
       .then(res => {
       if (res.data.name) {
