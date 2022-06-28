@@ -115,8 +115,8 @@ class App extends Component {
               <li style={{ width: '150px' }}>{val.category}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{val.productionYear}</li>
               <li style={{ width: '46px' }}>{val.active === true ? "Ativo" : "Inativo"}</li>
-              <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.deletarLivro(val.id) }}>D</button></li>
-              <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.editarLivro(val.id, val.title, val.productionYear, val.author, val.category, val.code, val.publishingCompany) }}>E</button></li>
+              <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarLivro(val.id) }}>D</button></li>
+              <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarLivro(val.id, val.title, val.productionYear, val.author, val.category, val.code, val.publishingCompany) }}>E</button></li>
             </ul>
           </li>
         );
