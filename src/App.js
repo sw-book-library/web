@@ -14,21 +14,21 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    axios.get(process.env.REACT_APP_API_URL + 'books')
+    axios.get(process.env.REACT_APP_API_URL + '/books')
       .then(res => {
         if (res.data && res.data) {
           this.setState({ books: [...this.state.books, ...res.data] })
         }
       });
 
-    axios.get(process.env.REACT_APP_API_URL + 'users')
+    axios.get(process.env.REACT_APP_API_URL + '/users')
       .then(res => {
         if (res.data && res.data) {
           this.setState({ users: [...this.state.users, ...res.data] })
         }
       });
 
-    axios.get(process.env.REACT_APP_API_URL + 'reserves')
+    axios.get(process.env.REACT_APP_API_URL + '/reserv)
       .then(res => {
         if (res.data && res.data) {
           this.setState({ emprestimos: [...this.state.emprestimos, ...res.data] })
@@ -46,7 +46,7 @@ class App extends Component {
       publishingCompany: inputPublishingCompany
     }
     if (idLivro === null || idLivro === undefined || idLivro === "") {
-      axios.post(process.env.REACT_APP_API_URL + 'books', data).then(res => {
+      axios.post(process.env.REACT_APP_API_URL + '/books', data).then(res => {
         document.getElementById("id").value = null;
         document.getElementById("codigo").value = null;
         document.getElementById("titulo").value = null;
@@ -58,7 +58,7 @@ class App extends Component {
         document.location.reload(true);
       })
     } else {
-      axios.put(process.env.REACT_APP_API_URL + 'books/'+ idLivro, data).then(res => {
+      axios.put(process.env.REACT_APP_API_URL + '/books/' + idLivro, data).then(res => {
         document.getElementById("id").value = null;
         document.getElementById("codigo").value = null;
         document.getElementById("titulo").value = null;
@@ -74,7 +74,7 @@ class App extends Component {
   }
 
   deletarLivro = (idLivro) => {
-    axios.delete(process.env.REACT_APP_API_URL + 'books/' + idLivro).then(res => {
+    axios.delete(process.env.REACT_APP_API_URL + '/books/' + idLivro).then(res => {
       alert(`Registro deletado com sucesso`);
       document.location.reload(true);
     })
@@ -227,7 +227,7 @@ class App extends Component {
       occupation: inputGrupoAcesso,
     }
     if (idUsuario === null || idUsuario === undefined || idUsuario === "") {
-      axios.post(process.env.REACT_APP_API_URL + 'users', data).then(res => {
+      axios.post(process.env.REACT_APP_API_URL + '/users', data).then(res => {
         document.getElementById("id").value = null;
         document.getElementById("matricula").value = null;
         document.getElementById("nome").value = null;
@@ -237,7 +237,7 @@ class App extends Component {
         document.location.reload(true);
       })
     } else {
-      axios.put(process.env.REACT_APP_API_URL + 'users/' + idUsuario, data).then(res => {
+      axios.put(process.env.REACT_APP_API_URL + '/users/' + idUsuario, data).then(res => {
         document.getElementById("id").value = null;
         document.getElementById("matricula").value = null;
         document.getElementById("nome").value = null;
@@ -251,7 +251,7 @@ class App extends Component {
   }
 
   deletarUsuario = (idUsuario) => {
-    axios.delete(process.env.REACT_APP_API_URL + 'users/' + idUsuario).then(res => {
+    axios.delete(process.env.REACT_APP_API_URL + '/usersbook/' + idUsuario).then(res => {
       alert(`Registro deletado com sucesso`);
       document.location.reload(true);
     })
@@ -285,7 +285,7 @@ class App extends Component {
               <li style={{ width: '100px' }}>{val.registration}</li>
               <li style={{ width: '411px' }}>{val.name}</li>
               <li style={{ width: '287px' }}>{val.email}</li>
-              <li style={{ width: '150px', textAlign: 'center' }}>{val.date}</li>
+              <li style={{ width: '150px', textAlign: 'center' }}>{val.createdAt}</li>
               <li style={{ width: '100px' }}>{(val.occupation === "student" ? "Estudante" : (val.occupation === "teacher" ? "Professor" : "Admin"))}</li>
               <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.deletarUsuario(val.id) }}>D</button></li>
               <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.editarUsuario(val.id, val.registration, val.name, val.email, val.occupation) }}>E</button></li>
@@ -303,14 +303,17 @@ class App extends Component {
     return (
       <div>
         <div className="div-row">
+
           <div style={{ display: 'none' }}>
             <label>Id</label>
             <input style={{ width: '100px' }} type="number" id="id" disabled />
           </div>
+
           <div className="quadro-input">
             <label>Matricula</label>
             <input style={{ width: '130px' }} type="number" id='matricula' />
           </div>
+
           <div className="quadro-input">
             <label>Nome</label>
             <input style={{ width: '500px' }} type="text" id='nome' />
@@ -369,14 +372,35 @@ class App extends Component {
 
 
   //------------------------------------------- EMPRÉSTIMOS -------------------------------------------//
+
+  buscarNomeUsuario = (matricula) => {
+    document.getElementById("nome-usuario").value = ""
+    axios.get(process.env.REACT_APP_API_URL + '/users/registration/' + matricula)
+      .then(res => {
+        if (res.data.name) {
+          document.getElementById("nome-usuario").value = res.data.name
+        }
+      });
+  }
+
+  buscarNomeLivro = (codigoLivro) => {
+    document.getElementById("nome-livro").value = ""
+    axios.get(process.env.REACT_APP_API_URL + '/books/code/' + codigoLivro)
+      .then(res => {
+        if (res.data.title) {
+          document.getElementById("nome-livro").value = res.data.title
+        }
+      });
+  }
+
   inserirEditarEmprestimo = (idReserva, inputMatricula, inputCodigoLivro, inputData) => {
     var data = {
-      scheduledDate: inputData,
+      returnDate: inputData,
       bookId: inputCodigoLivro,
       userId: inputMatricula
     }
     if (idReserva === null || idReserva === undefined || idReserva === "") {
-      axios.post(process.env.REACT_APP_API_URL + 'reserves' , data).then(res => {
+      axios.post(process.env.REACT_APP_API_URL + '/reserves', data).then(res => {
         document.getElementById("id").value = null;
         document.getElementById("matricula").value = null;
         document.getElementById("nome-usuario").value = null;
@@ -387,7 +411,7 @@ class App extends Component {
         document.location.reload(true);
       })
     } else {
-      axios.put(process.env.REACT_APP_API_URL + 'reserves/'  + idReserva, data).then(res => {
+      axios.put(process.env.REACT_APP_API_URL + '/reserves/' + idReserva, data).then(res => {
         document.getElementById("id").value = null;
         document.getElementById("matricula").value = null;
         document.getElementById("nome-usuario").value = null;
@@ -402,7 +426,7 @@ class App extends Component {
   }
 
   deletarEmprestimo = (idReserva) => {
-    axios.delete(process.env.REACT_APP_API_URL + 'reserves/' + idReserva).then(res => {
+    axios.delete(process.env.REACT_APP_API_URL + '/reserves/' + idReserva).then(res => {
       alert(`Registro deletado com sucesso`);
       document.location.reload(true);
     })
@@ -411,12 +435,12 @@ class App extends Component {
   editarEmprestimo = (idEmprestimo, inputMatricula, inputCodigoLivro, inputDataDevolucao) => {
     document.getElementById("id").value = idEmprestimo;
     document.getElementById("matricula").value = inputMatricula;
-    /*     document.getElementById("nome").value = inputNome; */
+    this.buscarNomeUsuario(inputMatricula);
     document.getElementById("codigo-livro").value = inputCodigoLivro;
+    this.buscarNomeLivro(inputCodigoLivro);
     document.getElementById("data-devolucao").value = inputDataDevolucao;
     document.getElementById("botao-cadastro-e-editar-emprestimo").textContent = "Alterar Empréstimo";
   }
-
 
 
 
@@ -440,10 +464,10 @@ class App extends Component {
               <li style={{ width: '251px' }}>{/* {val.registration} */}</li>
               <li style={{ width: '70px' }}>{val.bookId}</li>
               <li style={{ width: '331px' }}>{/* {val.registration} */}</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>{val.scheduledDate}</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>{val.returnDate}</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>{val.createdAt}</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>{ /* new Intl.DateTimeFormat('en-US').format( */val.returnDate/* ) */}</li>
               <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.deletarEmprestimo(val.id) }}>D</button></li>
-              <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.editarEmprestimo(val.id, val.userId, val.bookId, val.scheduledDate) }}>E</button></li>
+              <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.editarEmprestimo(val.id, val.userId, val.bookId, val.returnDate) }}>E</button></li>
             </ul>
           </li>
         );
@@ -489,7 +513,7 @@ class App extends Component {
 
           <div className="quadro-input">
             <label>Matricula</label>
-            <input style={{ width: '100px' }} type="number" id='matricula' />
+            <input onChange={() => { this.buscarNomeUsuario(document.getElementById("matricula").value) }} style={{ width: '100px' }} type="number" id='matricula' />
           </div>
 
           <div className="quadro-input">
@@ -501,7 +525,7 @@ class App extends Component {
         <div className="div-row">
           <div className="quadro-input">
             <label>Código Livro</label>
-            <input style={{ width: '100px' }} type="number" id='codigo-livro' />
+            <input onChange={() => { this.buscarNomeLivro(document.getElementById("codigo-livro").value) }} style={{ width: '100px' }} type="number" id='codigo-livro' />
           </div>
 
           <div className="quadro-input">
@@ -511,7 +535,7 @@ class App extends Component {
 
           <div className="quadro-input">
             <label>Data Devolução</label>
-            <input style={{ width: '138px' }} type="date" id='data-devolucao' />
+            <input pattern='dd/mm/yyyy' style={{ width: '138px' }} type="date" id='data-devolucao' />
           </div>
         </div>
 
@@ -575,11 +599,11 @@ class App extends Component {
         <div className='App'>
           <header>
             <ul className="opcoes-cabecalho">
-              <li><a href={this.renderCadastroLivroPage()}>Cadastrar Livro</a></li>
-              <li><a href={this.renderCadastroUsuarioPage()}>Cadastrar Usuário</a></li>
-              <li><a href={this.renderLivrosPage()}>Listar Livros</a></li>
-              <li><a href={this.renderCadastroEmprestimoLivroPage()}>Emprestar Livro</a></li>
-              <li><a href={this.renderEmprestimosLivrosPage()}>Consultar Empréstimos</a></li>
+              <li><a href={'#'}>Cadastrar Livro</a></li>
+              <li><a href={'#'}>Cadastrar Usuário</a></li>
+              <li><a href={'#'}>Listar Livros</a></li>
+              <li><a href={'#'}>Emprestar Livro</a></li>
+              <li><a href={'#'}>Consultar Empréstimos</a></li>
             </ul>
           </header>
           <main >
@@ -587,9 +611,9 @@ class App extends Component {
               //this.renderTelaInicial()
               //this.renderLivrosPage()
               //this.renderCadastroLivroPage()
-              this.renderCadastroUsuarioPage()
+              //this.renderCadastroUsuarioPage()
               //this.renderEmprestimosLivrosPage()
-              //this.renderCadastroEmprestimoLivroPage()
+              this.renderCadastroEmprestimoLivroPage()
             }
           </main >
         </div >
