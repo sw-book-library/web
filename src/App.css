@@ -323,6 +323,8 @@ input::-webkit-inner-spin-button {
   border: none;
   cursor: pointer;
   color: white;
+  text-align: center;
+  text-indent: center;
 }
 
 /* ------------------------------ Referente a Tela Inicial ------------------------------- */
