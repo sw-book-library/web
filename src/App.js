@@ -608,6 +608,10 @@ class App extends Component {
           </header>
           <main >
             {(() => {
+              
+              console.log(process.env.REACT_APP_API_URL + "/CadastrarLivro");
+              console.log(window.location.href);
+              
               if (window.location.href == process.env.REACT_APP_API_URL + "/CadastrarLivro") {
                 return (
                   this.renderCadastroLivroPage()
@@ -631,7 +635,7 @@ class App extends Component {
               }
               else {
                 return (
-                  this.renderTelaLogin()
+                  this.renderTelaInicial()
                 )
               }
             })()}
