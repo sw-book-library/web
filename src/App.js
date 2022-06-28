@@ -469,8 +469,8 @@ class App extends Component {
     }
     else {
       return (<ul className="quadro-dados">{this.state.emprestimos.map((val, key) => {
-        var nomeUsuario = {this.buscarNomeUsuario(val.userId, "LISTAGEM")}
-        var nomeLivro  = {this.buscarNomeLivro(val.bookId, "LISTAGEM")}
+        var nomeUsuario = this.buscarNomeUsuario(val.userId, "LISTAGEM")
+        var nomeLivro  = 'Teste fixo'//{this.buscarNomeLivro(val.bookId, "LISTAGEM")}
         return (
           <li key={key}>
             <ul className="linha-dados">
