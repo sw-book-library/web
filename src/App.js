@@ -575,7 +575,7 @@ class App extends Component {
             <input type="password" name="" id="" placeholder="Senha" />
             <button type="submit">LOGIN</button>
           </form>
-          <a href="https://github.com/sw-book-library">Entrar em modo aluno</a>
+          <a href={"DigilibLibrary"}>Entrar em modo aluno</a>
         </div>
       </main>
     );
@@ -625,10 +625,13 @@ class App extends Component {
                 return (
                   this.renderEmprestimosLivrosPage()
                 )
-              }
-              else {
+              }else if (window.location.href == "https://book-library-front.herokuapp.com/DigilibLibrary") {
                 return (
                   this.renderTelaInicial()
+                )
+              else {
+                return (
+                  this.renderTelaLogin()
                 )
               }
             })()}
