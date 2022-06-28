@@ -11,8 +11,8 @@ class App extends Component {
       books: [],
       users: [],
       emprestimos: [],
-      username: '',
-      title: ''
+      username: [],
+      title: []
     }
   }
   componentDidMount() {
@@ -471,11 +471,11 @@ class App extends Component {
     }
     else {
       return (<ul className="quadro-dados">{this.state.emprestimos.map((val, key) => {
+          {this.buscarNomeUsuario(val.userId, "LISTAGEM")}
+          {this.buscarNomeLivro(val.bookId, "LISTAGEM")}
         return (
           <li key={key}>
             <ul className="linha-dados">
-              {this.buscarNomeUsuario(val.userId, "LISTAGEM")}
-              //{this.buscarNomeLivro(val.bookId, "LISTAGEM")}
               <li style={{ width: '100px' }}>{val.userId}</li>
               <li style={{ width: '251px' }}>{this.state.username}</li>
               <li style={{ width: '70px' }}>{val.bookId}</li>
@@ -487,8 +487,6 @@ class App extends Component {
             </ul>
           </li>
         );
-            this.setState({ username: "" });
-            this.setState({ title: "" });
       })
       }</ul>);
     }
