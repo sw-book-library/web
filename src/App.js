@@ -1,5 +1,4 @@
 import logo from './LogoDigilibLibrary.png';
-import iconDelete from './iconDelete.svg';
 import './App.css';
 import { Component } from 'react';
 import axios from 'axios';
