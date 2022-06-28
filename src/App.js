@@ -390,7 +390,9 @@ class App extends Component {
   }
 
   buscarNomeLivro = (codigoLivro, local) => {
-    document.getElementById("nome-livro").value = ""
+    if(local === "INPUT"){
+      document.getElementById("nome-livro").value = ""
+    }
     axios.get(process.env.REACT_APP_API_URL + 'books/code/' + codigoLivro)
       .then(res => {
         if (res.data.title) {
