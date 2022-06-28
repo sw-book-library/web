@@ -387,12 +387,16 @@ class App extends Component {
       });
   }
 
-  buscarNomeLivro = (codigoLivro) => {
+  buscarNomeLivro = (codigoLivro, local) => {
     document.getElementById("nome-livro").value = ""
     axios.get(process.env.REACT_APP_API_URL + 'books/code/' + codigoLivro)
       .then(res => {
         if (res.data.title) {
-          document.getElementById("nome-livro").value = res.data.title
+          if(local === "INPUT"){
+            document.getElementById("nome-livro").value = res.data.title
+          }else if (local === "LISTAGEM"){
+            document.getElementById("nome-livro-listagem").textContent = res.data.title 
+          }
         }
       });
   }
@@ -439,9 +443,9 @@ class App extends Component {
   editarEmprestimo = (idEmprestimo, inputMatricula, inputCodigoLivro, inputDataDevolucao) => {
     document.getElementById("id").value = idEmprestimo;
     document.getElementById("matricula").value = inputMatricula;
-    this.buscarNomeUsuario(inputMatricula);
+    this.buscarNomeUsuario(inputMatricula, "INPUT);
     document.getElementById("codigo-livro").value = inputCodigoLivro;
-    this.buscarNomeLivro(inputCodigoLivro);
+    this.buscarNomeLivro(inputCodigoLivro, "INPUT");
     document.getElementById("data-devolucao").value = inputDataDevolucao;
     document.getElementById("botao-cadastro-e-editar-emprestimo").textContent = "Alterar Empréstimo";
   }
@@ -467,7 +471,7 @@ class App extends Component {
               <li style={{ width: '100px' }}>{val.userId}</li>
               <li style={{ width: '251px' }} id="nome-usuario-listagem">{this.buscarNomeUsuario(val.userId, "LISTAGEM")}</li>
               <li style={{ width: '70px' }}>{val.bookId}</li>
-              <li style={{ width: '331px' }}>{/* {val.registration} */}</li>
+              <li style={{ width: '331px' }} id="nome-livro-listagem">{this.buscarNomeLivro(val.bookId, "LISTAGEM")}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{val.createdAt}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{ /* new Intl.DateTimeFormat('en-US').format( */val.returnDate/* ) */}</li>
               <li style={{ width: '19px', textAlign: 'center' }}><button onClick={() => { this.deletarEmprestimo(val.id) }}>D</button></li>
@@ -529,7 +533,7 @@ class App extends Component {
         <div className="div-row">
           <div className="quadro-input">
             <label>Código Livro</label>
-            <input onChange={() => { this.buscarNomeLivro(document.getElementById("codigo-livro").value) }} style={{ width: '100px' }} type="number" id='codigo-livro' />
+            <input onChange={() => { this.buscarNomeLivro(document.getElementById("codigo-livro").value, "INPUT") }} style={{ width: '100px' }} type="number" id='codigo-livro' />
           </div>
 
           <div className="quadro-input">
