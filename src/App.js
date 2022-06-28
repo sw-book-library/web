@@ -629,7 +629,7 @@ class App extends Component {
                 return (
                   this.renderTelaInicial()
                 )
-              else {
+              }else {
                 return (
                   this.renderTelaLogin()
                 )
