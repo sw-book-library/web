@@ -318,11 +318,11 @@ input::-webkit-inner-spin-button {
 .linha-dados li button {
   height: 19px;
   width: 19px;
-  border-radius: 50%;
-  background-color: #004E70;;
-  border: none;
+  border-radius: 25%;
+  background-color: transparent;
+  border: 2px solid #d9d9d9;
   cursor: pointer;
-  color: white;
+  color: ##52525c;
   text-align: center;
   text-indent: center;
 }
