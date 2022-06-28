@@ -11,8 +11,8 @@ class App extends Component {
       books: [],
       users: [],
       emprestimos: [],
-      username: [],
-      title: []
+      username: '',
+      title: ''
     }
   }
   componentDidMount() {
