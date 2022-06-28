@@ -250,6 +250,13 @@ input::-webkit-inner-spin-button {
   overflow: auto;
 }
 
+.listagem-livros-cadastros {
+  display: flex;
+  width: 1120px;
+  height: calc(100vh - 275px);
+  overflow: auto;
+}
+
 
 ::-webkit-scrollbar {
   width: 8px;
