@@ -471,15 +471,19 @@ class App extends Component {
     }
     else {
       return (<ul className="quadro-dados">{this.state.emprestimos.map((val, key) => {
+
         return (
           <li key={key}>
             <ul className="linha-dados">
               {this.buscarNomeUsuario(val.userId, "LISTAGEM")}
-              {this.buscarNomeLivro(val.bookId, "LISTAGEM")}
+               this.buscarNomeLivro(val.bookId, "LISTAGEM")
+               var nomeUsuario = this.state.username
+               var nomeLivro  = this.state.title}
+               
               <li style={{ width: '100px' }}>{val.userId}</li>
-              <li style={{ width: '251px' }}>{this.state.username}</li>
+              <li style={{ width: '251px' }}>{this.nomeUsuario}</li>
               <li style={{ width: '70px' }}>{val.bookId}</li>
-              <li style={{ width: '331px' }}>{this.state.title}</li>
+              <li style={{ width: '331px' }}>{this.nomeLivro}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{val.createdAt}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{ /* new Intl.DateTimeFormat('en-US').format( */val.returnDate/* ) */}</li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarEmprestimo(val.id) }}>D</button></li>
