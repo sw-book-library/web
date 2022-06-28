@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       books: [],
       users: [],
-      emprestimos: []
+      emprestimos: [],
+      username: ''
     }
   }
   componentDidMount() {
@@ -399,7 +400,7 @@ class App extends Component {
           if(local === "INPUT"){
             document.getElementById("nome-livro").value = res.data.title
           }else if (local === "LISTAGEM"){
-            return res.data.title
+            this.setState({username: {res.data.title}})
           }
         }
       });
@@ -469,13 +470,14 @@ class App extends Component {
     }
     else {
       return (<ul className="quadro-dados">{this.state.emprestimos.map((val, key) => {
-        var nomeUsuario = this.buscarNomeUsuario(val.userId, "LISTAGEM")
-        var nomeLivro  = 'Teste fixo'//{this.buscarNomeLivro(val.bookId, "LISTAGEM")}
+        
+        var nomeLivro  = {this.state.username}//{this.buscarNomeLivro(val.bookId, "LISTAGEM")}
         return (
           <li key={key}>
             <ul className="linha-dados">
+              {this.buscarNomeUsuario(val.userId, "LISTAGEM")}
               <li style={{ width: '100px' }}>{val.userId}</li>
-              <li style={{ width: '251px' }}>{nomeUsuario}</li>
+              <li style={{ width: '251px' }}>{this.state.username}</li>
               <li style={{ width: '70px' }}>{val.bookId}</li>
               <li style={{ width: '331px' }}>{nomeLivro}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{val.createdAt}</li>
