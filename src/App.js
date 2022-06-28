@@ -561,9 +561,6 @@ class App extends Component {
     return (
       <div className="tela-inicial">
         <img className="logo" src={logo} alt="" />
-        <p>Essa tela devera aparecer quando abrir o sistema e não tiver clicado em nenhum menu.
-          Precisa ser definido um desing para essa tela inicial. Foi feito algo simples aqui apenas para representar
-        </p>
       </div>
     );
   }
