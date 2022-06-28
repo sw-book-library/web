@@ -142,7 +142,7 @@ class App extends Component {
             <li style={{ width: '150px' }}>Categoria</li>
             <li style={{ width: '140px', textAlign: 'center' }}>Ano Publicação</li>
             <li style={{ width: '46px' }}>Status</li>
-            <li style={{ width: '38px', textAlign: 'center' }}>...</li>
+            <li style={{ width: '38px', textAlign: 'center' }}></li>
           </ul>
         </div>
 
@@ -299,7 +299,7 @@ class App extends Component {
     };
   }
 
-  renderCadastroUsuarioPage() {
+  renderCadastroUsuarioPage(classePaginaListagem) {
     return (
       <div>
         <div className="div-row">
@@ -355,10 +355,10 @@ class App extends Component {
               <li style={{ width: '287px' }}>E-mail</li>
               <li style={{ width: '150px', textAlign: 'center' }}>Data Inclusão</li>
               <li style={{ width: '100px' }}>Acesso</li>
-              <li style={{ width: '34px', textAlign: 'center' }}>...</li>
+              <li style={{ width: '34px', textAlign: 'center' }}></li>
             </ul>
           </div>
-          <div className="listagem-livros">
+          <div className="listagem-livros-cadastros">
             {
               this.renderUsuarios()
             }
@@ -476,7 +476,7 @@ class App extends Component {
     }
   }
 
-  renderEmprestimosLivrosPage() {
+  renderEmprestimosLivrosPage(classePaginaListagem) {
     return (
       <div>
         <div className="titulos-listagem">
@@ -490,11 +490,11 @@ class App extends Component {
             <li style={{ width: '331px' }}>Título</li>
             <li style={{ width: '140px', textAlign: 'center' }}>Data Empréstimo</li>
             <li style={{ width: '140px', textAlign: 'center' }}>Data Devolução</li>
-            <li style={{ width: '38px', textAlign: 'center' }}>...</li>
+            <li style={{ width: '38px', textAlign: 'center' }}></li>
           </ul>
         </div>
 
-        <div className="listagem-livros">
+        <div className={classePaginaListagem}>
           {
             this.renderEmprestimoLivros()
           }
@@ -549,7 +549,7 @@ class App extends Component {
 
         <div className="divisao-cadastro-listagem">
           {
-            this.renderEmprestimosLivrosPage()
+            this.renderEmprestimosLivrosPage("listagem-livros-cadastros")
           }
         </div>
       </div>);
@@ -623,7 +623,7 @@ class App extends Component {
                 )
               } else if (window.location.href == "https://book-library-front.herokuapp.com/ConsultarEmprestimo") {
                 return (
-                  this.renderEmprestimosLivrosPage()
+                  this.renderEmprestimosLivrosPage("listagem-livros")
                 )
               } else  {
                 return (
