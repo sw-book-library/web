@@ -609,26 +609,26 @@ class App extends Component {
           <main >
             {(() => {
               
-              console.log(process.env.REACT_APP_API_URL + "/CadastrarLivro");
+              console.log(process.env.REACT_APP_API_URL + "CadastrarLivro");
               console.log(window.location.href);
               
-              if (window.location.href == process.env.REACT_APP_API_URL + "/CadastrarLivro") {
+              if (window.location.href == process.env.REACT_APP_API_URL + "CadastrarLivro") {
                 return (
                   this.renderCadastroLivroPage()
                 )
-              } else if (window.location.href == process.env.REACT_APP_API_URL + "/CadastrarUsuario") {
+              } else if (window.location.href == process.env.REACT_APP_API_URL + "CadastrarUsuario") {
                 return (
                   this.renderCadastroUsuarioPage()
                 )
-              } else if (window.location.href == process.env.REACT_APP_API_URL + "/ListarLivro") {
+              } else if (window.location.href == process.env.REACT_APP_API_URL + "ListarLivro") {
                 return (
                   this.renderLivrosPage()
                 )
-              } else if (window.location.href == process.env.REACT_APP_API_URL + "/EmprestarLivro") {
+              } else if (window.location.href == process.env.REACT_APP_API_URL + "EmprestarLivro") {
                 return (
                   this.renderCadastroEmprestimoLivroPage()
                 )
-              } else if (window.location.href == process.env.REACT_APP_API_URL + "/ConsultarEmprestimo") {
+              } else if (window.location.href == process.env.REACT_APP_API_URL + "ConsultarEmprestimo") {
                 return (
                   this.renderEmprestimosLivrosPage()
                 )
