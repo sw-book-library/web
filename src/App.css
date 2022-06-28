@@ -125,7 +125,8 @@ label {
   padding: 8px 1px;
 }
 
-.quadro-input input {
+.quadro-input input,
+select {
   height: 40px;
   border: 2px solid #D9D9D9;
   border-radius: 8px;
@@ -136,7 +137,8 @@ label {
   color: #52525C;
 }
 
-.quadro-input input:focus {
+.quadro-input input:focus,
+select:focus {
   outline: none !important;
 }
 
@@ -289,7 +291,7 @@ input::-webkit-inner-spin-button {
   white-space: nowrap;
   overflow: hidden !important;
   text-overflow: ellipsis;
-  
+
 }
 
 .linha-dados li {
