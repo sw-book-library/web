@@ -28,7 +28,7 @@ class App extends Component {
         }
       });
 
-    axios.get(process.env.REACT_APP_API_URL + '/reserv)
+    axios.get(process.env.REACT_APP_API_URL + '/reserv')
       .then(res => {
         if (res.data && res.data) {
           this.setState({ emprestimos: [...this.state.emprestimos, ...res.data] })
