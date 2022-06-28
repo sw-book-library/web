@@ -253,7 +253,7 @@ input::-webkit-inner-spin-button {
 .listagem-livros-cadastros {
   display: flex;
   width: 1120px;
-  height: calc(100vh - 385px);
+  height: calc(100vh - 390px);
   overflow: auto;
 }
 
