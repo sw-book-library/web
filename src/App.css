@@ -249,7 +249,9 @@ input::-webkit-inner-spin-button {
   height: calc(100vh - 160px);
   overflow: auto;
 }
-
+.listagem-livros button{
+ display: none; 
+}
 .listagem-livros-cadastros {
   display: flex;
   width: 1120px;
