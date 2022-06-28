@@ -599,22 +599,42 @@ class App extends Component {
         <div className='App'>
           <header>
             <ul className="opcoes-cabecalho">
-              <li><a href={'#'}>Cadastrar Livro</a></li>
-              <li><a href={'#'}>Cadastrar Usuário</a></li>
-              <li><a href={'#'}>Listar Livros</a></li>
-              <li><a href={'#'}>Emprestar Livro</a></li>
-              <li><a href={'#'}>Consultar Empréstimos</a></li>
+              <li><a href={"CadastrarLivro"}>Cadastrar Livro</a></li>
+              <li><a href={"CadastrarUsuario"}>Cadastrar Usuário</a></li>
+              <li><a href={"ListarLivro"}>Listar Livros</a></li>
+              <li><a href={"EmprestarLivro"}>Emprestar Livro</a></li>
+              <li><a href={"ConsultarEmprestimo"}>Consultar Empréstimos</a></li>
             </ul>
           </header>
           <main >
-            {
-              //this.renderTelaInicial()
-              //this.renderLivrosPage()
-              //this.renderCadastroLivroPage()
-              //this.renderCadastroUsuarioPage()
-              //this.renderEmprestimosLivrosPage()
-              this.renderCadastroEmprestimoLivroPage()
-            }
+            {(() => {
+              if (window.location.href == process.env.REACT_APP_API_URL + "/CadastrarLivro") {
+                return (
+                  this.renderCadastroLivroPage()
+                )
+              } else if (window.location.href == process.env.REACT_APP_API_URL + "/CadastrarUsuario") {
+                return (
+                  this.renderCadastroUsuarioPage()
+                )
+              } else if (window.location.href == process.env.REACT_APP_API_URL + "/ListarLivro") {
+                return (
+                  this.renderLivrosPage()
+                )
+              } else if (window.location.href == process.env.REACT_APP_API_URL + "/EmprestarLivro") {
+                return (
+                  this.renderCadastroEmprestimoLivroPage()
+                )
+              } else if (window.location.href == process.env.REACT_APP_API_URL + "/ConsultarEmprestimo") {
+                return (
+                  this.renderEmprestimosLivrosPage()
+                )
+              }
+              else {
+                return (
+                  this.renderTelaLogin()
+                )
+              }
+            })()}
           </main >
         </div >
       );
