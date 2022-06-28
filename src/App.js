@@ -574,7 +574,7 @@ class App extends Component {
             <input type="email" placeholder="Email" />
             <input type="password" name="" id="" placeholder="Senha" />
             <button href={"DigilibLibrary"} type="submit">LOGIN</button>
-          </form> "
+          </form>
           <a href={"DigilibLibrary"}>Entrar em modo aluno</a>
         </div>
       </main>
