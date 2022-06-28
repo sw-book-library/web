@@ -573,7 +573,7 @@ class App extends Component {
           <form action="">
             <input type="email" placeholder="Email" />
             <input type="password" name="" id="" placeholder="Senha" />
-            <button type="submit">LOGIN</button>
+            <button onClick={window.location.href == "https://book-library-front.herokuapp.com/DigilibLibrary"} type="submit">LOGIN</button>
           </form>
           <a href={"DigilibLibrary"}>Entrar em modo aluno</a>
         </div>
@@ -584,7 +584,7 @@ class App extends Component {
 
 
   render() {
-    if (1 == 2) {
+    if (window.location.href == "https://book-library-front.herokuapp.com/Login") {
       return (
         <div className='App'>
           {
@@ -625,13 +625,9 @@ class App extends Component {
                 return (
                   this.renderEmprestimosLivrosPage()
                 )
-              }else if (window.location.href == "https://book-library-front.herokuapp.com/DigilibLibrary") {
-                return (
-                  this.renderTelaInicial()
-                )
               }else {
                 return (
-                  this.renderTelaLogin()
+                  this.renderTelaInicial()
                 )
               }
             })()}
