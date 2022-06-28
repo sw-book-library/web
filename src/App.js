@@ -55,6 +55,7 @@ class App extends Component {
         document.getElementById("categoria").value = null;
         document.getElementById("anoPublicacao").value = null;
         alert(`Registro Inserido no banco com sucesso`);
+        document.location.reload(true);
       })
     } else {
       axios.put(process.env.REACT_APP_API_URL + 'books/'+ idLivro, data).then(res => {
@@ -67,6 +68,7 @@ class App extends Component {
         document.getElementById("anoPublicacao").value = null;
         document.getElementById("botao-cadastro-e-editar-livro").textContent = "Cadastrar Livro";
         alert(`Registro alterado com sucesso`);
+        document.location.reload(true);
       })
     }
   }
@@ -74,6 +76,7 @@ class App extends Component {
   deletarLivro = (idLivro) => {
     axios.delete(process.env.REACT_APP_API_URL + 'books/' + idLivro).then(res => {
       alert(`Registro deletado com sucesso`);
+      document.location.reload(true);
     })
   }
 
@@ -231,6 +234,7 @@ class App extends Component {
         document.getElementById("email").value = null;
         document.getElementById("grupo-acesso").value = null;
         alert(`Registro Inserido no banco com sucesso`);
+        document.location.reload(true);
       })
     } else {
       axios.put(process.env.REACT_APP_API_URL + 'users/' + idUsuario, data).then(res => {
@@ -241,6 +245,7 @@ class App extends Component {
         document.getElementById("grupo-acesso").value = null;
         document.getElementById("botao-cadastro-e-editar-usuario").textContent = "Alterar Usuário";
         alert(`Registro alterado com sucesso`);
+        document.location.reload(true);
       })
     }
   }
@@ -248,6 +253,7 @@ class App extends Component {
   deletarUsuario = (idUsuario) => {
     axios.delete(process.env.REACT_APP_API_URL + 'users/' + idUsuario).then(res => {
       alert(`Registro deletado com sucesso`);
+      document.location.reload(true);
     })
   }
 
@@ -378,6 +384,7 @@ class App extends Component {
         document.getElementById("nome-livro").value = null;
         document.getElementById("data-devolucao").value = null;
         alert(`Registro Inserido no banco com sucesso`);
+        document.location.reload(true);
       })
     } else {
       axios.put(process.env.REACT_APP_API_URL + 'reserves/'  + idReserva, data).then(res => {
@@ -389,6 +396,7 @@ class App extends Component {
         document.getElementById("data-devolucao").value = null;
         document.getElementById("botao-cadastro-e-editar-emprestimo").textContent = "Cadastrar Empréstimo";
         alert(`Registro alterado com sucesso`);
+        document.location.reload(true);
       })
     }
   }
@@ -396,6 +404,7 @@ class App extends Component {
   deletarEmprestimo = (idReserva) => {
     axios.delete(process.env.REACT_APP_API_URL + 'reserves/' + idReserva).then(res => {
       alert(`Registro deletado com sucesso`);
+      document.location.reload(true);
     })
   }
 
