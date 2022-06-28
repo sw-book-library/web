@@ -251,7 +251,7 @@ class App extends Component {
   }
 
   deletarUsuario = (idUsuario) => {
-    axios.delete(process.env.REACT_APP_API_URL + 'usersbook/' + idUsuario).then(res => {
+    axios.delete(process.env.REACT_APP_API_URL + 'users/' + idUsuario).then(res => {
       alert(`Registro deletado com sucesso`);
       document.location.reload(true);
     })
