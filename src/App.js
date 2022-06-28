@@ -383,7 +383,7 @@ class App extends Component {
         if(local === "INPUT"){
           document.getElementById("nome-usuario").value = res.data.name 
         }else if (local === "LISTAGEM"){
-          return res.data.name 
+          return  <div> res.data.name </div>
         }
       }
       });
@@ -399,7 +399,7 @@ class App extends Component {
           if(local === "INPUT"){
             document.getElementById("nome-livro").value = res.data.title
           }else if (local === "LISTAGEM"){
-            return res.data.title 
+            return <div> {res.data.title} </div>
           }
         }
       });
