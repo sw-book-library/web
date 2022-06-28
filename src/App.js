@@ -127,7 +127,7 @@ class App extends Component {
     };
   }
 
-  renderLivrosPage() {
+  renderLivrosPage(classePaginaListagem) {
     return (
       <div>
         <div className="titulos-listagem">
@@ -146,7 +146,7 @@ class App extends Component {
           </ul>
         </div>
 
-        <div className="listagem-livros">
+        <div className={classePaginaListagem}>
           {
             this.renderLivros()
           }
@@ -208,7 +208,7 @@ class App extends Component {
 
         <div className="divisao-cadastro-listagem">
           {
-            this.renderLivrosPage()
+            this.renderLivrosPage("listagem-livros-cadastros")
           }
         </div>
       </div>);
@@ -615,7 +615,7 @@ class App extends Component {
                 )
               } else if (window.location.href == "https://book-library-front.herokuapp.com/ListarLivro") {
                 return (
-                  this.renderLivrosPage()
+                  this.renderLivrosPage("listagem-livros")
                 )
               } else if (window.location.href == "https://book-library-front.herokuapp.com/EmprestarLivro") {
                 return (
