@@ -629,10 +629,6 @@ class App extends Component {
                 return (
                   this.renderTelaInicial()
                 )
-              }else{
-                return(
-                  //this.renderTelaInicial()
-                  )
               }
             })()}
           </main >
