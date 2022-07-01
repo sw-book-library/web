@@ -472,9 +472,9 @@ class App extends Component {
         return (
           <li key={key}>
             <ul className="linha-dados">
-              <li style={{ width: '100px' }}>{val.userId}</li>
+              <li style={{ width: '100px' }}>{val.User.registration}</li>
               <li style={{ width: '251px' }}>{val.User.name}</li>
-              <li style={{ width: '70px' }}>{val.bookId}</li>
+              <li style={{ width: '70px' }}>{val.Book.code}</li>
               <li style={{ width: '331px' }}>{val.Book.title}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{val.createdAt}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{ /* new Intl.DateTimeFormat('en-US').format( */val.returnDate/* ) */}</li>
