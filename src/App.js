@@ -382,9 +382,9 @@ class App extends Component {
         console.log(res.data.name)
           document.getElementById("nome-usuario").value = res.data.name
         }
-        if (res.data.userId) {
-          console.log(res.data.userId)
-          document.getElementById("id-usuario").value = res.data.userId
+        if (res.data.id) {
+          console.log(res.data.id)
+          document.getElementById("id-usuario").value = res.data.id
         }
     });
   }
@@ -399,13 +399,12 @@ class App extends Component {
         if (res.data.title) {
             document.getElementById("nome-livro").value = res.data.title
         }
-        if (res.data.bookId) {
-          console.log(res.data.bookId)
-          document.getElementById("id-livro").value = res.data.bookId
+        if (res.data.id) {
+          console.log(res.data.id)
+          document.getElementById("id-livro").value = res.data.id
       }
       });
   }
-
 
   inserirEditarEmprestimo = (idReserva, inputMatricula, inputCodigoLivro, inputData) => {
     var data = {
@@ -558,7 +557,7 @@ class App extends Component {
         <br />
 
         <div className="div-botao-padrao">
-          <button id='botao-cadastro-e-editar-emprestimo' onClick={() => { this.inserirEditarEmprestimo(document.getElementById("id").value, document.getElementById("matricula").value, document.getElementById("codigo-livro").value, document.getElementById("data-devolucao").value) }} className="botao-padrao">Emprestar Livro</button>
+          <button id='botao-cadastro-e-editar-emprestimo' onClick={() => { this.inserirEditarEmprestimo(document.getElementById("id").value, document.getElementById("id-usuario").value, document.getElementById("id-livro").value, document.getElementById("data-devolucao").value) }} className="botao-padrao">Emprestar Livro</button>
         </div>
 
         <br />
