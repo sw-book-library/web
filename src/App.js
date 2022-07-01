@@ -113,7 +113,7 @@ class App extends Component {
               <li style={{ width: '150px' }}>{val.author}</li>
               <li style={{ width: '150px' }}>{val.publishingCompany}</li>
               <li style={{ width: '150px' }}>{val.category}</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>{Moment(val.productionYear).locale('pt').format('YYYY')}</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>{Moment(val.productionYear).locale('pt').format('DD/MM/YYYY')}</li>
               <li style={{ width: '46px' }}>{val.active === true ? "Ativo" : "Inativo"}</li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarLivro(val.id) }}>D</button></li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarLivro(val.id, val.title, val.productionYear, val.author, val.category, val.code, val.publishingCompany) }}>E</button></li>
@@ -140,7 +140,7 @@ class App extends Component {
             <li style={{ width: '150px' }}>Autor</li>
             <li style={{ width: '150px' }}>Editora</li>
             <li style={{ width: '150px' }}>Categoria</li>
-            <li style={{ width: '140px', textAlign: 'center' }}>Ano Publicação</li>
+            <li style={{ width: '140px', textAlign: 'center' }}>Publicação</li>
             <li style={{ width: '46px' }}>Status</li>
             <li style={{ width: '38px', textAlign: 'center' }}></li>
           </ul>
