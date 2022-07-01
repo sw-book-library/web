@@ -473,10 +473,10 @@ class App extends Component {
           <li key={key}>
             <ul className="linha-dados">
               <li style={{ width: '100px' }}>{val.userId}</li>
-              <li style={{ width: '251px' }}>{/*this.buscarNomeUsuario(val.userId, "LISTAGEM")*/}</li>
+              <li style={{ width: '251px' }}>{val.userId}</li>
               <li style={{ width: '70px' }}>{val.bookId}</li>
-              <li style={{ width: '331px' }}>{/*this.buscarNomeLivro(val.bookId, "LISTAGEM")*/}</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>{val.createdAt}.format('MM/DD/YYYY')</li>
+              <li style={{ width: '331px' }}>{val.bookId}</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>{val.createdAt}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{ /* new Intl.DateTimeFormat('en-US').format( */val.returnDate/* ) */}</li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarEmprestimo(val.id) }}>D</button></li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarEmprestimo(val.id, val.userId, val.bookId, val.returnDate) }}>E</button></li>
