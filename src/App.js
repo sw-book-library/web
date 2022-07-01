@@ -281,7 +281,7 @@ class App extends Component {
       return (<ul className="quadro-dados"> {this.state.users.map((val, key) => {
         return (
           
-          console.log(new Intl.DateTimeFormat('en-US').format(val.createdAt));
+          console.log(new Intl.DateTimeFormat('en-US').format(val.createdAt)),
           
           <li key={key}>
             <ul className="linha-dados">
