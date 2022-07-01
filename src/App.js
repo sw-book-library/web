@@ -374,11 +374,15 @@ class App extends Component {
 
   buscarNomeUsuario = (matricula) => {
   document.getElementById("nome-usuario").value = ""
+  document.getElementById("id").value = ""
 
     axios.get(process.env.REACT_APP_API_URL + 'users/registration/' + matricula)
       .then(res => {
       if (res.data.name) {
           document.getElementById("nome-usuario").value = res.data.name
+        }
+        if (res.data.id) {
+          document.getElementById("id").value = res.data.id
         }
     });
   }
