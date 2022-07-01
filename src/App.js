@@ -447,9 +447,9 @@ class App extends Component {
   editarEmprestimo = (idEmprestimo, inputMatricula, inputCodigoLivro, inputDataDevolucao) => {
     document.getElementById("id").value = idEmprestimo;
     document.getElementById("matricula").value = inputMatricula;
-    this.buscarNomeUsuario(inputMatricula, "INPUT");
+    //this.buscarNomeUsuario(inputMatricula, "INPUT");
     document.getElementById("codigo-livro").value = inputCodigoLivro;
-    this.buscarNomeLivro(inputCodigoLivro, "INPUT");
+    //this.buscarNomeLivro(inputCodigoLivro, "INPUT");
     document.getElementById("data-devolucao").value = inputDataDevolucao;
     document.getElementById("botao-cadastro-e-editar-emprestimo").textContent = "Alterar Empréstimo";
   }
@@ -525,7 +525,7 @@ class App extends Component {
 
           <div className="quadro-input">
             <label>Matricula</label>
-            <input onChange={() => { this.buscarNomeUsuario(document.getElementById("matricula").value, "INPUT") }} style={{ width: '100px' }} type="number" id='matricula' />
+            <input onChange={() => { /*this.buscarNomeUsuario(document.getElementById("matricula").value, "INPUT") }*/} style={{ width: '100px' }} type="number" id='matricula' />
           </div>
 
           <div className="quadro-input">
@@ -537,7 +537,7 @@ class App extends Component {
         <div className="div-row">
           <div className="quadro-input">
             <label>Código Livro</label>
-            <input onChange={() => { this.buscarNomeLivro(document.getElementById("codigo-livro").value, "INPUT") }} style={{ width: '100px' }} type="number" id='codigo-livro' />
+            <input onChange={() => { /*this.buscarNomeLivro(document.getElementById("codigo-livro").value, "INPUT") }*/} style={{ width: '100px' }} type="number" id='codigo-livro' />
           </div>
 
           <div className="quadro-input">
