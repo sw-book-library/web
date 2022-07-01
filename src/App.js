@@ -525,7 +525,7 @@ class App extends Component {
 
           <div className="quadro-input">
             <label>Matricula</label>
-            <input onChange={() => { /*this.buscarNomeUsuario(document.getElementById("matricula").value, "INPUT") }*/} style={{ width: '100px' }} type="number" id='matricula' />
+            <input style={{ width: '100px' }} type="number" id='matricula' />
           </div>
 
           <div className="quadro-input">
@@ -537,7 +537,7 @@ class App extends Component {
         <div className="div-row">
           <div className="quadro-input">
             <label>Código Livro</label>
-            <input onChange={() => { /*this.buscarNomeLivro(document.getElementById("codigo-livro").value, "INPUT") }*/} style={{ width: '100px' }} type="number" id='codigo-livro' />
+            <input style={{ width: '100px' }} type="number" id='codigo-livro' />
           </div>
 
           <div className="quadro-input">
