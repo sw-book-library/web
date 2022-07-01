@@ -4,7 +4,6 @@ import { Component } from 'react';
 import axios from 'axios';
 
 class App extends Component {
-  console.log("Executou ultima versão");
   constructor(props) {
     super(props);
     this.state = {
