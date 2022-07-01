@@ -2,6 +2,7 @@ import logo from './LogoDigilibLibrary.png';
 import './App.css';
 import { Component } from 'react';
 import axios from 'axios';
+import Moment from 'moment';
 
 class App extends Component {
   constructor(props) {
@@ -477,7 +478,7 @@ class App extends Component {
               <li style={{ width: '251px' }}>{val.User.name}</li>
               <li style={{ width: '70px' }}>{val.Book.code}</li>
               <li style={{ width: '331px' }}>{val.Book.title}</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>{val.createdAt}</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>{Moment(val.createdAt).format('d MMM').locale('en')}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{ /* new Intl.DateTimeFormat('en-US').format( */val.returnDate/* ) */}</li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarEmprestimo(val.id) }}>D</button></li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarEmprestimo(val.id, val.User.registration, val.Book.code, val.returnDate) }}>E</button></li>
