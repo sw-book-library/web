@@ -468,6 +468,7 @@ class App extends Component {
     }
     else {
       return (<ul className="quadro-dados">{this.state.emprestimos.map((val, key) => {
+        console.log(val);
         return (
           <li key={key}>
             <ul className="linha-dados">
