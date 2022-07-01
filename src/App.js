@@ -374,15 +374,17 @@ class App extends Component {
 
   buscarNomeUsuario = (matricula) => {
   document.getElementById("nome-usuario").value = ""
-  document.getElementById("id").value = ""
+  document.getElementById("id-usuario").value = ""
 
     axios.get(process.env.REACT_APP_API_URL + 'users/registration/' + matricula)
       .then(res => {
       if (res.data.name) {
+        console.log(res.data.name)
           document.getElementById("nome-usuario").value = res.data.name
         }
-        if (res.data.id) {
-          document.getElementById("id").value = res.data.id
+        if (res.data.userId) {
+          console.log(res.data.userId)
+          document.getElementById("id-usuario").value = res.data.userId
         }
     });
   }
@@ -390,14 +392,20 @@ class App extends Component {
 
   buscarNomeLivro = (codigoLivro) => {
       document.getElementById("nome-livro").value = ""
-
+      document.getElementById("id-livro").value = ""
+      
     axios.get(process.env.REACT_APP_API_URL + 'books/code/' + codigoLivro)
       .then(res => {
         if (res.data.title) {
             document.getElementById("nome-livro").value = res.data.title
         }
+        if (res.data.bookId) {
+          console.log(res.data.bookId)
+          document.getElementById("id-livro").value = res.data.bookId
+      }
       });
   }
+
 
   inserirEditarEmprestimo = (idReserva, inputMatricula, inputCodigoLivro, inputData) => {
     var data = {
@@ -525,6 +533,7 @@ class App extends Component {
           <div className="quadro-input">
             <label>Nome Usuário</label>
             <input  style={{ width: '425px' }} type="text" id='nome-usuario' disabled />
+            <input  style={{ width: '425px' }} type="hidden" id='id-usuario' disabled />
           </div>
         </div>
 
@@ -537,6 +546,7 @@ class App extends Component {
           <div className="quadro-input">
             <label>Nome Livro</label>
             <input style={{ width: '620px' }} type="text" id='nome-livro' disabled />
+            <input style={{ width: '620px' }} type="hidden" id='id-livro' disabled />
           </div>
 
           <div className="quadro-input">
