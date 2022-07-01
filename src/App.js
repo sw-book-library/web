@@ -284,7 +284,7 @@ class App extends Component {
               <li style={{ width: '100px' }}>{val.registration}</li>
               <li style={{ width: '411px' }}>{val.name}</li>
               <li style={{ width: '287px' }}>{val.email}</li>
-              <li style={{ width: '150px', textAlign: 'center' }}>{(val.createdAt).format('MM/DD/YYYY')}</li>
+              <li style={{ width: '150px', textAlign: 'center' }}>{val.createdAt}</li>
               <li style={{ width: '100px' }}>{(val.occupation === "student" ? "Estudante" : (val.occupation === "teacher" ? "Professor" : "Admin"))}</li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarUsuario(val.id) }}>D</button></li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarUsuario(val.id, val.registration, val.name, val.email, val.occupation) }}>E</button></li>
