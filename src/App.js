@@ -113,7 +113,7 @@ class App extends Component {
               <li style={{ width: '150px' }}>{val.author}</li>
               <li style={{ width: '150px' }}>{val.publishingCompany}</li>
               <li style={{ width: '150px' }}>{val.category}</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>{val.productionYear}</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>{Moment(val.productionYear).locale('pt').format('YYYY')}</li>
               <li style={{ width: '46px' }}>{val.active === true ? "Ativo" : "Inativo"}</li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarLivro(val.id) }}>D</button></li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarLivro(val.id, val.title, val.productionYear, val.author, val.category, val.code, val.publishingCompany) }}>E</button></li>
@@ -285,7 +285,7 @@ class App extends Component {
               <li style={{ width: '100px' }}>{val.registration}</li>
               <li style={{ width: '411px' }}>{val.name}</li>
               <li style={{ width: '287px' }}>{val.email}</li>
-              <li style={{ width: '150px', textAlign: 'center' }}>{val.createdAt}</li>
+              <li style={{ width: '150px', textAlign: 'center' }}>{Moment(val.createdAt).locale('pt').format('DD/MM/YYYY')}</li>
               <li style={{ width: '100px' }}>{(val.occupation === "student" ? "Estudante" : (val.occupation === "teacher" ? "Professor" : "Admin"))}</li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarUsuario(val.id) }}>D</button></li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarUsuario(val.id, val.registration, val.name, val.email, val.occupation) }}>E</button></li>
@@ -407,11 +407,11 @@ class App extends Component {
       });
   }
 
-  inserirEditarEmprestimo = (idReserva, inputMatricula, inputCodigoLivro, inputData) => {
+  inserirEditarEmprestimo = (idReserva, idUsuario, idLivro, inputData) => {
     var data = {
       returnDate: inputData,
-      bookId: inputCodigoLivro,
-      userId: inputMatricula
+      bookId: idLivro,
+      userId: idUsuario
     }
     if (idReserva === null || idReserva === undefined || idReserva === "") {
       axios.post(process.env.REACT_APP_API_URL + 'reserves', data).then(res => {
@@ -478,8 +478,8 @@ class App extends Component {
               <li style={{ width: '251px' }}>{val.User.name}</li>
               <li style={{ width: '70px' }}>{val.Book.code}</li>
               <li style={{ width: '331px' }}>{val.Book.title}</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>{Moment(val.createdAt).locale('pt').format('DD-MM-YYYY')}</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>{Moment(val.returnDate).locale('pt').format('DD-MM-YYYY')}</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>{Moment(val.createdAt).locale('pt').format('DD/MM/YYYY')}</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>{Moment(val.returnDate).locale('pt').format('DD/MM/YYYY')}</li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarEmprestimo(val.id) }}>D</button></li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarEmprestimo(val.id, val.User.registration, val.Book.code, val.returnDate) }}>E</button></li>
             </ul>
