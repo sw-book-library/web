@@ -280,6 +280,9 @@ class App extends Component {
     else {
       return (<ul className="quadro-dados"> {this.state.users.map((val, key) => {
         return (
+          
+          console.log(new Intl.DateTimeFormat('en-US').format(val.createdAt));
+          
           <li key={key}>
             <ul className="linha-dados">
               <li style={{ width: '100px' }}>{val.registration}</li>
