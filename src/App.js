@@ -515,24 +515,24 @@ class App extends Component {
 
           <div className="quadro-input">
             <label>Matricula</label>
-            <input style={{ width: '100px' }} type="number" id='matricula' />
+            <input onChange={() => { this.buscarNomeUsuario(document.getElementById("matricula").value) }} style={{ width: '100px' }} type="number" id='matricula' />
           </div>
 
           <div className="quadro-input">
             <label>Nome Usuário</label>
-            <input onChange={() => { this.buscarNomeUsuario(document.getElementById("matricula").value) }} style={{ width: '425px' }} type="text" id='nome-usuario' disabled />
+            <input  style={{ width: '425px' }} type="text" id='nome-usuario' disabled />
           </div>
         </div>
 
         <div className="div-row">
           <div className="quadro-input">
             <label>Código Livro</label>
-            <input style={{ width: '100px' }} type="number" id='codigo-livro' />
+            <input onChange={() => { this.buscarNomeLivro(document.getElementById("codigo-livro").value) }}  style={{ width: '100px' }} type="number" id='codigo-livro' />
           </div>
 
           <div className="quadro-input">
             <label>Nome Livro</label>
-            <input onChange={() => { this.buscarNomeLivro(document.getElementById("codigo-livro").value) }} style={{ width: '620px' }} type="text" id='nome-livro' disabled />
+            <input style={{ width: '620px' }} type="text" id='nome-livro' disabled />
           </div>
 
           <div className="quadro-input">
