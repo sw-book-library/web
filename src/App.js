@@ -437,9 +437,9 @@ class App extends Component {
   editarEmprestimo = (idEmprestimo, inputMatricula, inputCodigoLivro, inputDataDevolucao) => {
     document.getElementById("id").value = idEmprestimo;
     document.getElementById("matricula").value = inputMatricula;
-    //this.buscarNomeUsuario(inputMatricula, "INPUT");
+    this.buscarNomeUsuario(inputMatricula);
     document.getElementById("codigo-livro").value = inputCodigoLivro;
-    //this.buscarNomeLivro(inputCodigoLivro, "INPUT");
+    this.buscarNomeLivro(inputCodigoLivro);
     document.getElementById("data-devolucao").value = inputDataDevolucao;
     document.getElementById("botao-cadastro-e-editar-emprestimo").textContent = "Alterar Empréstimo";
   }
@@ -469,7 +469,7 @@ class App extends Component {
               <li style={{ width: '140px', textAlign: 'center' }}>{val.createdAt}</li>
               <li style={{ width: '140px', textAlign: 'center' }}>{ /* new Intl.DateTimeFormat('en-US').format( */val.returnDate/* ) */}</li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarEmprestimo(val.id) }}>D</button></li>
-              <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarEmprestimo(val.id, val.User.code, val.Book.code, val.returnDate) }}>E</button></li>
+              <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarEmprestimo(val.id, val.User.registration, val.Book.code, val.returnDate) }}>E</button></li>
             </ul>
           </li>
         );
