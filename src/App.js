@@ -371,39 +371,30 @@ class App extends Component {
 
 
   //------------------------------------------- EMPRÉSTIMOS -------------------------------------------//
-/*
-  buscarNomeUsuario = (matricula, local) => {
-    if(local === "INPUT"){
-       document.getElementById("nome-usuario").value = ""
-    }
+
+  buscarNomeUsuario = (matricula) => {
+  document.getElementById("nome-usuario").value = ""
+
     axios.get(process.env.REACT_APP_API_URL + 'users/registration/' + matricula)
       .then(res => {
       if (res.data.name) {
-        if(local === "INPUT"){
-          document.getElementById("nome-usuario").value = res.data.name 
-        }else if (local === "LISTAGEM"){
-          return res.data.name
+          document.getElementById("nome-usuario").value = res.data.name
         }
-      }
-      });
+    });
   }
+           
 
-  buscarNomeLivro = (codigoLivro, local) => {
-    if(local === "INPUT"){
+  buscarNomeLivro = (codigoLivro) => {
       document.getElementById("nome-livro").value = ""
-    }
+
     axios.get(process.env.REACT_APP_API_URL + 'books/code/' + codigoLivro)
       .then(res => {
         if (res.data.title) {
-          if(local === "INPUT"){
             document.getElementById("nome-livro").value = res.data.title
-          }else if (local === "LISTAGEM"){
-            return res.data.title
-          }
         }
       });
   }
-*/
+
   inserirEditarEmprestimo = (idReserva, inputMatricula, inputCodigoLivro, inputData) => {
     var data = {
       returnDate: inputData,
@@ -530,7 +521,7 @@ class App extends Component {
 
           <div className="quadro-input">
             <label>Nome Usuário</label>
-            <input style={{ width: '425px' }} type="text" id='nome-usuario' disabled />
+            <input onChange={() => { this.buscarNomeUsuario(document.getElementById("matricula").value) }} style={{ width: '425px' }} type="text" id='nome-usuario' disabled />
           </div>
         </div>
 
@@ -542,7 +533,7 @@ class App extends Component {
 
           <div className="quadro-input">
             <label>Nome Livro</label>
-            <input style={{ width: '620px' }} type="text" id='nome-livro' disabled />
+            <input onChange={() => { this.buscarNomeLivro(document.getElementById("codigo-livro").value) }} style={{ width: '620px' }} type="text" id='nome-livro' disabled />
           </div>
 
           <div className="quadro-input">
