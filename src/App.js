@@ -478,8 +478,8 @@ class App extends Component {
               <li style={{ width: '251px' }}>{val.User.name}</li>
               <li style={{ width: '70px' }}>{val.Book.code}</li>
               <li style={{ width: '331px' }}>{val.Book.title}</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>{Moment(val.createdAt).locale('en').format('d MMM')}</li>
-              <li style={{ width: '140px', textAlign: 'center' }}>{ /* new Intl.DateTimeFormat('en-US').format( */val.returnDate/* ) */}</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>{Moment(val.createdAt).locale('pt').format('DD-MM-YYYY')}</li>
+              <li style={{ width: '140px', textAlign: 'center' }}>{Moment(val.returnDate).locale('pt').format('DD-MM-YYYY')}</li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.deletarEmprestimo(val.id) }}>D</button></li>
               <li style={{ width: '22px', textAlign: 'center' }}><button onClick={() => { this.editarEmprestimo(val.id, val.User.registration, val.Book.code, val.returnDate) }}>E</button></li>
             </ul>
